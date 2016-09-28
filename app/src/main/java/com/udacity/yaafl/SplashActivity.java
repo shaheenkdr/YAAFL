@@ -6,7 +6,9 @@ import android.util.Log;
 
 import com.crashlytics.android.Crashlytics;
 import com.udacity.yaafl.event_bus.HomeAwayEvent;
+import com.udacity.yaafl.event_bus.MotivationEvent;
 import com.udacity.yaafl.neuron.HomeAway;
+import com.udacity.yaafl.neuron.TeamMotivation;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -21,7 +23,7 @@ public class SplashActivity extends AppCompatActivity {
         Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_splash);
         EventBus.getDefault().register(this);
-        HomeAway h1 = new HomeAway(0,false);
+        TeamMotivation m1 = new TeamMotivation(1,true,66);
 
 
     }
@@ -30,5 +32,11 @@ public class SplashActivity extends AppCompatActivity {
     public void onEvent(HomeAwayEvent event)
     {
        Log.e("Thenga",""+event.getHomeAwayScore());
+    }
+
+    @Subscribe
+    public void onEvent(MotivationEvent event)
+    {
+        Log.e("Thenga2",""+event.getMotivationScore());
     }
 }

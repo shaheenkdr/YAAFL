@@ -15,6 +15,9 @@ public class TeamInfo
                                                "Swansea","Tottenham","Watford",
                                                "West_Bromwich_Albion", "West_Ham"};
 
+    private static final int HOME_WIN_AVG = 46;
+    private static final int AWAY_WIN_AVG = 27;
+
     /**
      * Method to generate teamID
      * @param name of the team
@@ -49,6 +52,16 @@ public class TeamInfo
         else
             return TEAM_NAME[id];
 
+    }
+
+    public static int getHomeWinAvg()
+    {
+        return HOME_WIN_AVG;
+    }
+
+    public static int getAwayWinAvg()
+    {
+        return AWAY_WIN_AVG;
     }
 
 }
