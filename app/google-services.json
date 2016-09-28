@@ -1,27 +1,27 @@
 {
   "project_info": {
-    "project_number": "93636235341",
-    "firebase_url": "https://yaafl-f20f2.firebaseio.com",
-    "project_id": "yaafl-f20f2",
-    "storage_bucket": "yaafl-f20f2.appspot.com"
+    "project_number": "XXXXXXXXXXXXXXXXXXX",
+    "firebase_url": "https://XXXXXX.firebaseio.com",
+    "project_id": "XXXXX",
+    "storage_bucket": "XXXXXXX.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:93636235341:android:f06b919a4f0edc51",
+        "mobilesdk_app_id": "XXXXXXXXXXXXXXXXXXXXXXXXXXXX",
         "android_client_info": {
           "package_name": "com.udacity.yaafl"
         }
       },
       "oauth_client": [
         {
-          "client_id": "93636235341-q0j9u7nbj983lumqhd1ob6ukqg0ejv6d.apps.googleusercontent.com",
+          "client_id": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyD4PbqXFQuLwq8HL7ogZQB11Ijaa1nvZUU"
+          "current_key": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
         }
       ],
       "services": {
