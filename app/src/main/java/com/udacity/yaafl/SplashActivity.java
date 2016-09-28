@@ -5,7 +5,11 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.crashlytics.android.Crashlytics;
+import com.udacity.yaafl.event_bus.HomeAwayEvent;
 import com.udacity.yaafl.neuron.HomeAway;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import io.fabric.sdk.android.Fabric;
 
@@ -16,8 +20,15 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_splash);
+        EventBus.getDefault().register(this);
+        HomeAway h1 = new HomeAway(0,false);
 
-        HomeAway h1 = new HomeAway(0,true);
-        Log.e("Thenga",""+h1.getChances());
+
+    }
+
+    @Subscribe
+    public void onEvent(HomeAwayEvent event)
+    {
+       Log.e("Thenga",""+event.getHomeAwayScore());
     }
 }
