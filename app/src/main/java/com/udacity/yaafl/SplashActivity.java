@@ -5,10 +5,12 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.crashlytics.android.Crashlytics;
+import com.udacity.yaafl.event_bus.CohesionEvent;
 import com.udacity.yaafl.event_bus.Head2HeadEvent;
 import com.udacity.yaafl.event_bus.HomeAwayEvent;
 import com.udacity.yaafl.event_bus.MotivationEvent;
 import com.udacity.yaafl.neuron.HomeAway;
+import com.udacity.yaafl.neuron.TeamCohesion;
 import com.udacity.yaafl.neuron.TeamHeadToHead;
 import com.udacity.yaafl.neuron.TeamMotivation;
 import com.udacity.yaafl.utility.TeamInfo;
@@ -29,7 +31,7 @@ public class SplashActivity extends AppCompatActivity {
 
         Log.e("THENGA",""+ TeamInfo.getMatchId("WestHam VS ManchesterUnited"));
 
-        TeamHeadToHead hx = new TeamHeadToHead(0,2);
+        TeamCohesion th = new TeamCohesion(0,true,66);
 
 
     }
@@ -50,5 +52,11 @@ public class SplashActivity extends AppCompatActivity {
     public void onEvent(Head2HeadEvent event)
     {
         Log.e("OHOHOHOH",""+event.getHeadToHeadScore());
+    }
+
+    @Subscribe
+    public void onEvent(CohesionEvent event)
+    {
+        Log.e("Alas lololol",""+event.getCohesionScore());
     }
 }
