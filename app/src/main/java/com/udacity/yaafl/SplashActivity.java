@@ -13,6 +13,7 @@ import com.udacity.yaafl.neuron.HomeAway;
 import com.udacity.yaafl.neuron.TeamCohesion;
 import com.udacity.yaafl.neuron.TeamHeadToHead;
 import com.udacity.yaafl.neuron.TeamMotivation;
+import com.udacity.yaafl.neuron.TeamValue;
 import com.udacity.yaafl.utility.TeamInfo;
 
 import org.greenrobot.eventbus.EventBus;
@@ -31,7 +32,7 @@ public class SplashActivity extends AppCompatActivity {
 
         Log.e("THENGA",""+ TeamInfo.getMatchId("WestHam VS ManchesterUnited"));
 
-        TeamCohesion th = new TeamCohesion(0,true,66);
+        TeamValue t1 = new TeamValue(1);
 
 
     }

@@ -20,6 +20,7 @@ public class TeamInfo
     private static final int HOME_WIN_AVG = 46;
     private static final int AWAY_WIN_AVG = 27;
     private static HashMap<String,String> hm;
+    private static HashMap<Integer,Integer> team_value;
 
     static
     {
@@ -404,8 +405,6 @@ public class TeamInfo
         hm.put("WestHam VS Tottenham", "M378X");
         hm.put("WestHam VS Watford", "M379X");
         hm.put("WestHam VS WestBromWich", "M380X");
-
-
 
     }
 
