@@ -28,7 +28,7 @@ public class TeamMotivation
     }
 
 
-    private int calculateMotivation()
+    public int calculateMotivation()
     {
         for(com.udacity.yaafl.cohesion.Recent r:recent)
         {

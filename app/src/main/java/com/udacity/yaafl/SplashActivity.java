@@ -17,6 +17,7 @@ import com.udacity.yaafl.event_bus.MotivationEvent;
 import com.udacity.yaafl.event_bus.PassesEvent;
 import com.udacity.yaafl.firebase_db.Passes;
 import com.udacity.yaafl.neuron.HomeAway;
+import com.udacity.yaafl.neuron.MainNeuron;
 import com.udacity.yaafl.neuron.TeamCohesion;
 import com.udacity.yaafl.neuron.TeamHeadToHead;
 import com.udacity.yaafl.neuron.TeamMotivation;
@@ -36,6 +37,7 @@ public class SplashActivity extends AppCompatActivity {
         Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_splash);
         EventBus.getDefault().register(this);
+
         getPasses();
 
 
@@ -49,8 +51,9 @@ public class SplashActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot)
             {
 
-                    CohesionMain chTest = dataSnapshot.getValue(CohesionMain.class);
-                    Log.e("TEST_FB",chTest.getSituational().get(0).getTeam());
+                CohesionMain chTest = dataSnapshot.getValue(CohesionMain.class);
+                MainNeuron mm = new MainNeuron(chTest,8,0);
+                Log.e("TEST_FB",chTest.getSituational().get(0).getTeam());
             }
 
             @Override

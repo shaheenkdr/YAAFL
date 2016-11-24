@@ -10,6 +10,7 @@ public class TeamValue
 
     static
     {
+        team_values = new HashMap<>();
         team_values.put(0,1616);
         team_values.put(1,451);
         team_values.put(2,318);
