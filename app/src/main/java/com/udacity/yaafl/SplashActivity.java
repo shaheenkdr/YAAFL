@@ -5,10 +5,17 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.crashlytics.android.Crashlytics;
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
+import com.udacity.yaafl.cohesion.CohesionMain;
 import com.udacity.yaafl.event_bus.CohesionEvent;
 import com.udacity.yaafl.event_bus.Head2HeadEvent;
 import com.udacity.yaafl.event_bus.HomeAwayEvent;
 import com.udacity.yaafl.event_bus.MotivationEvent;
+import com.udacity.yaafl.event_bus.PassesEvent;
+import com.udacity.yaafl.firebase_db.Passes;
 import com.udacity.yaafl.neuron.HomeAway;
 import com.udacity.yaafl.neuron.TeamCohesion;
 import com.udacity.yaafl.neuron.TeamHeadToHead;
@@ -29,19 +36,33 @@ public class SplashActivity extends AppCompatActivity {
         Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_splash);
         EventBus.getDefault().register(this);
-
-        Log.e("THENGA",""+ TeamInfo.getMatchId("WestHam VS ManchesterUnited"));
-
-        TeamValue t1 = new TeamValue(1);
+        getPasses();
 
 
     }
 
-    @Subscribe
-    public void onEvent(HomeAwayEvent event)
+    private void getPasses()
     {
-       Log.e("Thenga",""+event.getHomeAwayScore());
+        Firebase fRef = new Firebase("https://yaafl-f20f2.firebaseio.com/Cohesion");
+        fRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot)
+            {
+
+                    CohesionMain chTest = dataSnapshot.getValue(CohesionMain.class);
+                    Log.e("TEST_FB",chTest.getSituational().get(0).getTeam());
+            }
+
+            @Override
+            public void onCancelled(FirebaseError firebaseError) {
+
+            }
+        });
+
     }
+
+
+
 
     @Subscribe
     public void onEvent(MotivationEvent event)
@@ -49,11 +70,7 @@ public class SplashActivity extends AppCompatActivity {
         Log.e("Thenga2",""+event.getMotivationScore());
     }
 
-    @Subscribe
-    public void onEvent(Head2HeadEvent event)
-    {
-        Log.e("OHOHOHOH",""+event.getHeadToHeadScore());
-    }
+
 
     @Subscribe
     public void onEvent(CohesionEvent event)

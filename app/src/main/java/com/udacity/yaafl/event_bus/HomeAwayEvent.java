@@ -18,4 +18,9 @@ public class HomeAwayEvent
         return HOME_AWAY_SCORE;
     }
 
+    public boolean isHomeOrAway()
+    {
+        return HOME_AWAY_FLAG;
+    }
+
 }

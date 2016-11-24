@@ -20,7 +20,7 @@ public class TeamHeadToHead
 {
     private int team1_id;
     private int team2_id;
-    private int score;
+    private int[] score;
     private Firebase fRef;
     private static final String HEADTOHEAD_URL = "https://yaafl-f20f2.firebaseio.com/Cohesion/Head2Head";
 
@@ -28,7 +28,7 @@ public class TeamHeadToHead
     {
         this.team1_id = team1;
         this.team2_id = team2;
-        score = 0;
+        score = new int[2];
         fRef = new Firebase(HEADTOHEAD_URL);
         computeScore();
 
@@ -48,7 +48,8 @@ public class TeamHeadToHead
                         Head2Head versus_value = objData.getValue(Head2Head.class);
                         if(versus_value.getMatchID().equals(MID))
                         {
-                            score = (versus_value.getTeam1()/versus_value.getTeam2())*100;
+                            score[0] = versus_value.getTeam1();
+                            score[1] = versus_value.getTeam2();
                             EventBus.getDefault().post(new Head2HeadEvent(score));
                             break;
 
@@ -56,7 +57,7 @@ public class TeamHeadToHead
                     }
                 }
                 else
-                    EventBus.getDefault().post(new Head2HeadEvent(-1));
+                    EventBus.getDefault().post(new Head2HeadEvent(score));
 
 
             }

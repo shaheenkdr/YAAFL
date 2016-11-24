@@ -24,95 +24,49 @@ public class HomeAway
     private boolean home_away_id;
     private int home_wins;
     private int away_wins;
-    private Firebase fRef;
-    private static final String SITUATIONAL_URL = "https://yaafl-f20f2.firebaseio.com/Cohesion/Situational";
+    private List<com.udacity.yaafl.cohesion.Situational>s_data;
 
 
 
-    public HomeAway(int team, boolean home_away)
+
+
+    public HomeAway(int team, boolean home_away, List<com.udacity.yaafl.cohesion.Situational> s_data)
     {
         this.team_id = team;
         this.home_away_id = home_away;
-        fRef = new Firebase(SITUATIONAL_URL);
-        computeHomeAwayScore();
+        this.s_data = s_data;
     }
 
-    private void computeHomeAwayScore()
+    public int computeHomeAwayScore()
     {
 
-
-
-        fRef.addValueEventListener(new ValueEventListener()
-        {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot)
-            {
-                if(home_away_id)
-                {
-
-                    for(DataSnapshot objData : dataSnapshot.getChildren())
-                    {
-                        Situational situational_value= objData.getValue(Situational.class);
-                        if(situational_value.getHome() && situational_value.getTeam().equals(TeamInfo.getTeamName(team_id)))
-                        {
-                            home_wins = (int)((double)(situational_value.getWon())/(double)(situational_value.getMatchPlayed())*100);
-                            EventBus.getDefault().post(new HomeAwayEvent(home_wins,true));
-                            break;
-                        }
-                    }
-                }
-                else
-                {
-                    for(DataSnapshot objData : dataSnapshot.getChildren())
-                    {
-                        Situational situational_value= objData.getValue(Situational.class);
-                        if((!situational_value.getHome()) && situational_value.getTeam().equals(TeamInfo.getTeamName(team_id)))
-                        {
-                            away_wins = (int)((double)(situational_value.getWon())/(double)(situational_value.getMatchPlayed())*100);
-                            EventBus.getDefault().post(new HomeAwayEvent(away_wins,false));
-                            break;
-                        }
-                    }
-                }
-
-
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError)
-            {
-
-            }
-        });
-
-    }
-/*
-    private void calculateChances()
-    {
         if(home_away_id)
         {
-            for(Situational x:situational_data)
+            for(com.udacity.yaafl.cohesion.Situational situation_data: s_data)
             {
-                if(x.getHome() && x.getTeam().equals(TeamInfo.getTeamName(team_id)))
+                if(situation_data.getHome() && situation_data.getTeam().equals(TeamInfo.getTeamName(team_id)))
                 {
-                    home_wins = (int)((double)(x.getWon())/(double)(x.getMatchPlayed())*100);
+                    home_wins = (int)((double)(situation_data.getWon())/(double)(situation_data.getMatchPlayed())*100);
                 }
             }
+            return home_wins;
         }
+
         else
         {
-            for(Situational x:situational_data)
+            for(com.udacity.yaafl.cohesion.Situational situation_data: s_data)
             {
-                if((!x.getHome()) && x.getTeam().equals(TeamInfo.getTeamName(team_id)))
+                if(situation_data.getAway() && situation_data.getTeam().equals(TeamInfo.getTeamName(team_id)))
                 {
-                    away_wins = (int)((double)(x.getWon())/(double)(x.getMatchPlayed())*100);
+                    away_wins = (int)((double)(situation_data.getWon())/(double)(situation_data.getMatchPlayed())*100);
                 }
             }
+            return away_wins;
         }
+
 
 
     }
-    */
 
 
 }
