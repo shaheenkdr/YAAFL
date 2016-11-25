@@ -48,26 +48,7 @@ public class SplashActivity extends AppCompatActivity {
 
     }
 
-    private void getPasses()
-    {
-        Firebase fRef = new Firebase("https://yaafl-f20f2.firebaseio.com/Cohesion");
-        fRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot)
-            {
 
-                CohesionMain chTest = dataSnapshot.getValue(CohesionMain.class);
-                MainNeuron mm = new MainNeuron(chTest,8,0);
-                Log.e("TEST_FB",chTest.getSituational().get(0).getTeam());
-            }
-
-            @Override
-            public void onCancelled(FirebaseError firebaseError) {
-
-            }
-        });
-
-    }
 
 
 

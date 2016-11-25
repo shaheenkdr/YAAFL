@@ -14,6 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Window;
 
 import com.udacity.yaafl.R;
+import com.udacity.yaafl.adapter.AwayAdapter;
 import com.udacity.yaafl.adapter.HomeAdapter;
 import com.udacity.yaafl.utility.TeamInfo;
 
@@ -53,8 +54,8 @@ public class AwayTeamSelector extends AppCompatActivity
         rView.setHasFixedSize(true);
         LinearLayoutManager llm = new LinearLayoutManager(AwayTeamSelector.this);
         rView.setLayoutManager(llm);
-        HomeAdapter homeAdapter = new HomeAdapter(team_list);
-        rView.setAdapter(homeAdapter);
+        AwayAdapter awayAdapter = new AwayAdapter(team_list,homeTeam);
+        rView.setAdapter(awayAdapter);
 
     }
 

@@ -14,8 +14,17 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.firebase.client.DataSnapshot;
+import com.firebase.client.Firebase;
+import com.firebase.client.FirebaseError;
+import com.firebase.client.ValueEventListener;
 import com.udacity.yaafl.R;
 import com.udacity.yaafl.activities.AwayTeamSelector;
+import com.udacity.yaafl.activities.ResultActivity;
+import com.udacity.yaafl.cohesion.CohesionMain;
+import com.udacity.yaafl.neuron.MainNeuron;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.ArrayList;
 
@@ -25,6 +34,8 @@ public class AwayAdapter extends RecyclerView.Adapter<AwayAdapter.AwayTeamViewHo
 
 
     private DataHolder d1 = new DataHolder();
+    private int home_team;
+
 
     public  class AwayTeamViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
     {
@@ -34,12 +45,13 @@ public class AwayAdapter extends RecyclerView.Adapter<AwayAdapter.AwayTeamViewHo
         private Context mcontext;
 
 
+
         AwayTeamViewHolder(View itemView)
         {
             super(itemView);
             mcontext = itemView.getContext();
-            away_teams = (ImageView)itemView.findViewById(R.id.homeTeamImage);
-            teamName = (TextView)itemView.findViewById(R.id.homeTeamName);
+            away_teams = (ImageView)itemView.findViewById(R.id.awayTeamImage);
+            teamName = (TextView)itemView.findViewById(R.id.awayTeamName);
             face = Typeface.createFromAsset(itemView.getContext().getAssets(), "Fonts/Roboto-Regular.ttf");
             teamName.setTypeface(face);
             itemView.setOnClickListener(this);
@@ -48,10 +60,10 @@ public class AwayAdapter extends RecyclerView.Adapter<AwayAdapter.AwayTeamViewHo
         @Override
         public void onClick(View view)
         {
-            Intent intent = new Intent(itemView.getContext(), AwayTeamSelector.class);
+            Intent intent = new Intent(itemView.getContext(), ResultActivity.class);
             Bundle extras = new Bundle();
-            extras.putInt("HOME",getLayoutPosition());
-            Log.e("TEST",""+getLayoutPosition());
+            extras.putInt("HOME",home_team);
+            extras.putInt("AWAY",getLayoutPosition());
             intent.putExtras(extras);
             itemView.getContext().startActivity(intent);
         }
@@ -68,9 +80,12 @@ public class AwayAdapter extends RecyclerView.Adapter<AwayAdapter.AwayTeamViewHo
 
 
 
-    public AwayAdapter(ArrayList<String> teams)
+    public AwayAdapter(ArrayList<String> teams,int home_team)
     {
         this.d1.teams = teams;
+        this.home_team = home_team;
+
+
     }
 
 
@@ -114,6 +129,7 @@ public class AwayAdapter extends RecyclerView.Adapter<AwayAdapter.AwayTeamViewHo
             return 0;
         }
     }
+
 
 
 

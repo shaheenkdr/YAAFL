@@ -27,6 +27,7 @@ public class TeamHeadToHead
     private List<com.udacity.yaafl.cohesion.Head2Head> head;
     public TeamHeadToHead(List<com.udacity.yaafl.cohesion.Head2Head>head,int team1, int team2)
     {
+        this.head = head;
         this.team1_id = team1;
         this.team2_id = team2;
         score = new int[2];

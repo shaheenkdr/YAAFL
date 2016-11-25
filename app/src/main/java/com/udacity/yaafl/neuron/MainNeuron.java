@@ -6,6 +6,7 @@ import android.util.Log;
 import com.udacity.yaafl.cohesion.CohesionMain;
 import com.udacity.yaafl.event_bus.Head2HeadEvent;
 import com.udacity.yaafl.event_bus.HomeAwayEvent;
+import com.udacity.yaafl.event_bus.WinEvent;
 import com.udacity.yaafl.firebase_db.Head2Head;
 import com.udacity.yaafl.utility.TeamInfo;
 
@@ -43,12 +44,24 @@ public class MainNeuron
         this.data = data;
         this.team_id_1 = team_id_1;
         this.team_id_2 = team_id_2;
-        //teams_head_to_head = new TeamHeadToHead(team_id_1,team_id_2);
-        computeHomeScore();
-        computeAwayScore();
+
+
     }
 
-    private void computeHomeScore()
+
+    public  void processData()
+    {
+        int home = computeHomeScore();
+        int away = computeAwayScore();
+        teams_head_to_head = new TeamHeadToHead(data.getHead2Head(),team_id_1,team_id_2);
+        int[] headToHead = teams_head_to_head.computeScore();
+        home+= headToHead[0];
+        away+= headToHead[1];
+        Log.e("SHIIT",""+home+" : "+away);
+        EventBus.getDefault().post(new WinEvent(home,away,team_id_1,team_id_2));
+
+    }
+    private int computeHomeScore()
     {
         home = new HomeAway(team_id_1,true,data.getSituational());
         home_score = home.computeHomeAwayScore();
@@ -62,12 +75,11 @@ public class MainNeuron
         team_motivation_1 = new TeamMotivation(data.getRecent(),team_id_1,true,home_score);
         motivation_score_1 = team_motivation_1.calculateMotivation();
 
-        int s = home_score + team_value_score_1+cohesion_score_1+motivation_score_1;
-        Log.e(""+ TeamInfo.getTeamName(team_id_1),""+s);
+        return home_score + team_value_score_1+cohesion_score_1+motivation_score_1;
 
     }
 
-    private void computeAwayScore()
+    private int computeAwayScore()
     {
         away = new HomeAway(team_id_2,false,data.getSituational());
         away_score = away.computeHomeAwayScore();
@@ -81,9 +93,7 @@ public class MainNeuron
         team_motivation_2 = new TeamMotivation(data.getRecent(),team_id_2,false,away_score);
         motivation_score_2 = team_motivation_2.calculateMotivation();
 
-        int s = away_score + team_value_score_2+cohesion_score_2+motivation_score_2;
-        Log.e(TeamInfo.getTeamName(team_id_2),""+s);
-
+        return away_score + team_value_score_2+cohesion_score_2+motivation_score_2;
     }
 
 
