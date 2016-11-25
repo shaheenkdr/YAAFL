@@ -1,5 +1,6 @@
-package com.udacity.yaafl;
+package com.udacity.yaafl.activities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,6 +10,7 @@ import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
+import com.udacity.yaafl.R;
 import com.udacity.yaafl.cohesion.CohesionMain;
 import com.udacity.yaafl.event_bus.CohesionEvent;
 import com.udacity.yaafl.event_bus.Head2HeadEvent;
@@ -38,7 +40,10 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
         EventBus.getDefault().register(this);
 
-        getPasses();
+        Intent intent = new Intent(SplashActivity.this,HomeTeamSelector.class);
+        startActivity(intent);
+        finish();
+        //getPasses();
 
 
     }
