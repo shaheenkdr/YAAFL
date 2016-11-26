@@ -15,5 +15,6 @@ public class AppMain extends Application
         super.onCreate();
         Firebase.setAndroidContext(this);
         EventBus myEventBus = EventBus.getDefault();
+
     }
 }

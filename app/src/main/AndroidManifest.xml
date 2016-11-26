@@ -26,6 +26,17 @@
         <activity android:name=".activities.HomeTeamSelector" />
         <activity android:name=".activities.AwayTeamSelector"></activity>
         <activity android:name=".activities.ResultActivity"></activity>
+
+        <receiver android:name=".widget.Widget">
+
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"></action>
+            </intent-filter>
+
+            <meta-data android:name="android.appwidget.provider"
+                android:resource="@xml/appwidgetprovider"></meta-data>
+
+        </receiver>
     </application>
 
 </manifest>

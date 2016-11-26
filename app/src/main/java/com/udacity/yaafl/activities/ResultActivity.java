@@ -9,6 +9,9 @@ import com.firebase.client.DataSnapshot;
 import com.firebase.client.Firebase;
 import com.firebase.client.FirebaseError;
 import com.firebase.client.ValueEventListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.udacity.yaafl.R;
 import com.udacity.yaafl.cohesion.CohesionMain;
 import com.udacity.yaafl.event_bus.MotivationEvent;
@@ -32,6 +35,10 @@ public class ResultActivity extends AppCompatActivity
         Bundle extras = getIntent().getExtras();
         int homeTeam = extras.getInt("HOME");
         int awayTeam = extras.getInt("AWAY");
+        MobileAds.initialize(getApplicationContext(), "ca-app-pub-3940256099942544~3347511713");
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
         getPasses(homeTeam,awayTeam);
 
     }
