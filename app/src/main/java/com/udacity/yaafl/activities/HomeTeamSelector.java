@@ -2,7 +2,9 @@ package com.udacity.yaafl.activities;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -11,10 +13,19 @@ import android.support.v7.graphics.Palette;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.transition.Explode;
+import android.transition.Fade;
+import android.transition.Slide;
+import android.transition.TransitionInflater;
+import android.view.View;
 import android.view.Window;
 
+import com.elmargomez.typer.Font;
+import com.elmargomez.typer.Typer;
 import com.udacity.yaafl.R;
 import com.udacity.yaafl.adapter.HomeAdapter;
+
+import com.udacity.yaafl.utility.SpeedyLinearLayoutManager;
 import com.udacity.yaafl.utility.TeamInfo;
 
 import java.util.ArrayList;
@@ -35,24 +46,44 @@ public class HomeTeamSelector extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_team_selector);
-
+        setupWindowAnimations();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
 
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
-        collapsingToolbarLayout.setTitle(getResources().getString(R.string.user_name));
+        Typeface font = Typer.set(this).getFont(Font.ROBOTO_BOLD);
+        collapsingToolbarLayout.setExpandedTitleTypeface(font);
+        collapsingToolbarLayout.setTitle(getResources().getString(R.string.home_team));
 
         dynamicToolbarColor();
         toolbarTextAppernce();
-        RecyclerView rView = (RecyclerView)findViewById(R.id.homeTeamRView);
+        final RecyclerView rView = (RecyclerView)findViewById(R.id.homeTeamRView);
         rView.setHasFixedSize(true);
-        LinearLayoutManager llm = new LinearLayoutManager(HomeTeamSelector.this);
+        SpeedyLinearLayoutManager llm = new SpeedyLinearLayoutManager(HomeTeamSelector.this);
         rView.setLayoutManager(llm);
         HomeAdapter homeAdapter = new HomeAdapter(team_list);
         rView.setAdapter(homeAdapter);
 
+        FloatingActionButton fab = (FloatingActionButton)findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                rView.smoothScrollToPosition(7);
+
+            }
+        });
+
+
+
+    }
+
+    private void setupWindowAnimations() {
+        Fade fade = new Fade();
+        fade.setDuration(1000);
+        getWindow().setExitTransition(fade);
+        getWindow().setEnterTransition(fade);
     }
 
     private void dynamicToolbarColor() {

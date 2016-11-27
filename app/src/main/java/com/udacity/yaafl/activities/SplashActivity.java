@@ -1,34 +1,20 @@
 package com.udacity.yaafl.activities;
 
+
 import android.content.Intent;
+import android.os.Handler;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.transition.Fade;
+import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.ImageView;
 
 import com.crashlytics.android.Crashlytics;
-import com.firebase.client.DataSnapshot;
-import com.firebase.client.Firebase;
-import com.firebase.client.FirebaseError;
-import com.firebase.client.ValueEventListener;
 import com.udacity.yaafl.R;
-import com.udacity.yaafl.cohesion.CohesionMain;
-import com.udacity.yaafl.event_bus.CohesionEvent;
-import com.udacity.yaafl.event_bus.Head2HeadEvent;
-import com.udacity.yaafl.event_bus.HomeAwayEvent;
-import com.udacity.yaafl.event_bus.MotivationEvent;
-import com.udacity.yaafl.event_bus.PassesEvent;
-import com.udacity.yaafl.firebase_db.Passes;
-import com.udacity.yaafl.neuron.HomeAway;
-import com.udacity.yaafl.neuron.MainNeuron;
-import com.udacity.yaafl.neuron.TeamCohesion;
-import com.udacity.yaafl.neuron.TeamHeadToHead;
-import com.udacity.yaafl.neuron.TeamMotivation;
-import com.udacity.yaafl.neuron.TeamValue;
-import com.udacity.yaafl.utility.TeamInfo;
-
 import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-
 import io.fabric.sdk.android.Fabric;
 
 public class SplashActivity extends AppCompatActivity {
@@ -37,33 +23,41 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Fabric.with(this, new Crashlytics());
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash);
-        EventBus.getDefault().register(this);
+        setupWindowAnimations();
+        ImageView im1 = (ImageView)findViewById(R.id.cupImage);
+        //im1.setScaleType(ImageView.ScaleType.FIT_CENTER);
+        View view = getLayoutInflater().inflate(R.layout.activity_splash, null);
+        final ActivityOptionsCompat options = ActivityOptionsCompat.
+                makeSceneTransitionAnimation(this, view, "splash");
 
-        Intent intent = new Intent(SplashActivity.this,HomeTeamSelector.class);
-        startActivity(intent);
-        finish();
+        int secondsDelayed = 1;
+        new Handler().postDelayed(new Runnable() {
+            public void run() {
+
+
+
+                Intent intent = new Intent(SplashActivity.this,HomeTeamSelector.class);
+                startActivity(intent,options.toBundle());
+                finish();
+
+
+            }
+        }, secondsDelayed * 2000);
         //getPasses();
 
 
     }
 
 
-
-
-
-
-    @Subscribe
-    public void onEvent(MotivationEvent event)
-    {
-        Log.e("Thenga2",""+event.getMotivationScore());
+    private void setupWindowAnimations() {
+        Fade fade = new Fade();
+        fade.setDuration(1000);
+        getWindow().setExitTransition(fade);
     }
 
 
 
-    @Subscribe
-    public void onEvent(CohesionEvent event)
-    {
-        Log.e("Alas lololol",""+event.getCohesionScore());
-    }
 }

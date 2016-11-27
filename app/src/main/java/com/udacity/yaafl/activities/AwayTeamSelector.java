@@ -11,6 +11,9 @@ import android.support.v7.graphics.Palette;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.transition.Explode;
+import android.transition.Fade;
+import android.transition.Slide;
 import android.view.Window;
 
 import com.udacity.yaafl.R;
@@ -39,14 +42,14 @@ public class AwayTeamSelector extends AppCompatActivity
         setContentView(R.layout.activity_away_team_selector);
         Bundle extras = getIntent().getExtras();
         homeTeam = extras.getInt("HOME");
-
+        setupWindowAnimations();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_away);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar_away);
-        collapsingToolbarLayout.setTitle(getResources().getString(R.string.user_name));
+        collapsingToolbarLayout.setTitle(getResources().getString(R.string.away_team));
 
         dynamicToolbarColor();
         toolbarTextAppearence();
@@ -57,6 +60,12 @@ public class AwayTeamSelector extends AppCompatActivity
         AwayAdapter awayAdapter = new AwayAdapter(team_list,homeTeam);
         rView.setAdapter(awayAdapter);
 
+    }
+
+    private void setupWindowAnimations() {
+        Explode exp = new Explode();
+        exp.setDuration(1000);
+        getWindow().setEnterTransition(exp);
     }
 
     private void dynamicToolbarColor() {

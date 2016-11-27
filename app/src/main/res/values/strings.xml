@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">YAAFL</string>
-    <string name="user_name">Shaheen</string>
+    <string name="app_name_extra">Y A A F L</string>
+    <string name="home_team">CHOOSE HOME TEAM</string>
+    <string name="away_team">choose away team</string>
     <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
 </resources>

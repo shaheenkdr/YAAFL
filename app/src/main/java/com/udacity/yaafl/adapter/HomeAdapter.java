@@ -2,10 +2,12 @@ package com.udacity.yaafl.adapter;
 
 
 import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -17,6 +19,7 @@ import android.widget.TextView;
 
 import com.udacity.yaafl.R;
 import com.udacity.yaafl.activities.AwayTeamSelector;
+import com.udacity.yaafl.activities.HomeTeamSelector;
 
 import java.util.ArrayList;
 
@@ -41,8 +44,8 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeTeamViewHo
             mcontext = itemView.getContext();
             home_teams = (ImageView)itemView.findViewById(R.id.homeTeamImage);
             teamName = (TextView)itemView.findViewById(R.id.homeTeamName);
-            face = Typeface.createFromAsset(itemView.getContext().getAssets(), "Fonts/Roboto-Regular.ttf");
-            teamName.setTypeface(face);
+            //face = Typeface.createFromAsset(itemView.getContext().getAssets(), "Fonts/Roboto-Regular.ttf");
+            //teamName.setTypeface(face);
             itemView.setOnClickListener(this);
         }
 
@@ -54,7 +57,10 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeTeamViewHo
             extras.putInt("HOME",getLayoutPosition());
             Log.e("TEST",""+getLayoutPosition());
             intent.putExtras(extras);
-            itemView.getContext().startActivity(intent);
+            ActivityOptionsCompat options = ActivityOptionsCompat.
+                    makeSceneTransitionAnimation((Activity)mcontext, (View)home_teams, "appcard");
+            itemView.getContext().startActivity(intent, options.toBundle());
+
         }
 
 
