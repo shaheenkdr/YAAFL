@@ -3,6 +3,7 @@ package com.udacity.yaafl.activities;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
@@ -10,15 +11,11 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.graphics.Palette;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.transition.Explode;
 import android.transition.Fade;
-import android.transition.Slide;
-import android.transition.TransitionInflater;
 import android.view.View;
-import android.view.Window;
+
 
 import com.elmargomez.typer.Font;
 import com.elmargomez.typer.Typer;
@@ -39,7 +36,7 @@ public class HomeTeamSelector extends AppCompatActivity
     {
         team_list = new ArrayList<>();
         for(int i=0;i<20;i++)
-            team_list.add(TeamInfo.getTeamName(i));
+            team_list.add(TeamInfo.getTeamNameForView(i));
     }
 
     @Override
@@ -50,6 +47,7 @@ public class HomeTeamSelector extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
+        final AppBarLayout abl = (AppBarLayout)findViewById(R.id.appbarhome);
 
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         Typeface font = Typer.set(this).getFont(Font.ROBOTO_BOLD);
@@ -70,7 +68,9 @@ public class HomeTeamSelector extends AppCompatActivity
             @Override
             public void onClick(View view)
             {
+                abl.setExpanded(false);
                 rView.smoothScrollToPosition(7);
+
 
             }
         });

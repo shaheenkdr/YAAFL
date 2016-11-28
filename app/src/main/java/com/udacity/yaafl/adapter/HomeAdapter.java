@@ -17,6 +17,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.elmargomez.typer.Font;
+import com.elmargomez.typer.Typer;
 import com.udacity.yaafl.R;
 import com.udacity.yaafl.activities.AwayTeamSelector;
 import com.udacity.yaafl.activities.HomeTeamSelector;
@@ -44,8 +46,8 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeTeamViewHo
             mcontext = itemView.getContext();
             home_teams = (ImageView)itemView.findViewById(R.id.homeTeamImage);
             teamName = (TextView)itemView.findViewById(R.id.homeTeamName);
-            //face = Typeface.createFromAsset(itemView.getContext().getAssets(), "Fonts/Roboto-Regular.ttf");
-            //teamName.setTypeface(face);
+            Typeface font = Typer.set(mcontext).getFont(Font.ROBOTO_MEDIUM);
+            teamName.setTypeface(font);
             itemView.setOnClickListener(this);
         }
 

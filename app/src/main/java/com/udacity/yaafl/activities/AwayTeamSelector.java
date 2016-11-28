@@ -2,7 +2,10 @@ package com.udacity.yaafl.activities;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -14,11 +17,15 @@ import android.support.v7.widget.Toolbar;
 import android.transition.Explode;
 import android.transition.Fade;
 import android.transition.Slide;
+import android.view.View;
 import android.view.Window;
 
+import com.elmargomez.typer.Font;
+import com.elmargomez.typer.Typer;
 import com.udacity.yaafl.R;
 import com.udacity.yaafl.adapter.AwayAdapter;
 import com.udacity.yaafl.adapter.HomeAdapter;
+import com.udacity.yaafl.utility.SpeedyLinearLayoutManager;
 import com.udacity.yaafl.utility.TeamInfo;
 
 import java.util.ArrayList;
@@ -33,7 +40,7 @@ public class AwayTeamSelector extends AppCompatActivity
     {
         team_list = new ArrayList<>();
         for(int i=0;i<20;i++)
-            team_list.add(TeamInfo.getTeamName(i));
+            team_list.add(TeamInfo.getTeamNameForView(i));
     }
 
     @Override
@@ -44,21 +51,38 @@ public class AwayTeamSelector extends AppCompatActivity
         homeTeam = extras.getInt("HOME");
         setupWindowAnimations();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_away);
+        final AppBarLayout abl = (AppBarLayout)findViewById(R.id.appBarAway);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
 
+
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar_away);
         collapsingToolbarLayout.setTitle(getResources().getString(R.string.away_team));
+        Typeface font = Typer.set(this).getFont(Font.ROBOTO_BOLD);
+        collapsingToolbarLayout.setExpandedTitleTypeface(font);
 
         dynamicToolbarColor();
         toolbarTextAppearence();
-        RecyclerView rView = (RecyclerView)findViewById(R.id.awayTeamRView);
+        final RecyclerView rView = (RecyclerView)findViewById(R.id.awayTeamRView);
         rView.setHasFixedSize(true);
-        LinearLayoutManager llm = new LinearLayoutManager(AwayTeamSelector.this);
+        SpeedyLinearLayoutManager llm = new SpeedyLinearLayoutManager(AwayTeamSelector.this);
         rView.setLayoutManager(llm);
         AwayAdapter awayAdapter = new AwayAdapter(team_list,homeTeam);
         rView.setAdapter(awayAdapter);
+        awayAdapter.delete(homeTeam);
+
+        FloatingActionButton fab = (FloatingActionButton)findViewById(R.id.fabAway);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                abl.setExpanded(false);
+                rView.smoothScrollToPosition(7);
+
+
+            }
+        });
 
     }
 

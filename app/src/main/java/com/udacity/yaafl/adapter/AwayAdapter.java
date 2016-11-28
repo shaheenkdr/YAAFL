@@ -1,30 +1,24 @@
 package com.udacity.yaafl.adapter;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.firebase.client.DataSnapshot;
-import com.firebase.client.Firebase;
-import com.firebase.client.FirebaseError;
-import com.firebase.client.ValueEventListener;
+import com.elmargomez.typer.Font;
+import com.elmargomez.typer.Typer;
 import com.udacity.yaafl.R;
-import com.udacity.yaafl.activities.AwayTeamSelector;
-import com.udacity.yaafl.activities.ResultActivity;
-import com.udacity.yaafl.cohesion.CohesionMain;
-import com.udacity.yaafl.neuron.MainNeuron;
-
-import org.greenrobot.eventbus.EventBus;
+import com.udacity.yaafl.activities.FinalizeActivity;
+import com.udacity.yaafl.utility.TeamInfo;
 
 import java.util.ArrayList;
 
@@ -40,7 +34,6 @@ public class AwayAdapter extends RecyclerView.Adapter<AwayAdapter.AwayTeamViewHo
     public  class AwayTeamViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
     {
         private TextView teamName;
-        private Typeface face;
         private ImageView away_teams;
         private Context mcontext;
 
@@ -52,21 +45,26 @@ public class AwayAdapter extends RecyclerView.Adapter<AwayAdapter.AwayTeamViewHo
             mcontext = itemView.getContext();
             away_teams = (ImageView)itemView.findViewById(R.id.awayTeamImage);
             teamName = (TextView)itemView.findViewById(R.id.awayTeamName);
-            face = Typeface.createFromAsset(itemView.getContext().getAssets(), "Fonts/Roboto-Regular.ttf");
-            teamName.setTypeface(face);
+            Typeface font = Typer.set(mcontext).getFont(Font.ROBOTO_MEDIUM);
+            teamName.setTypeface(font);
+
+
             itemView.setOnClickListener(this);
         }
 
         @Override
         public void onClick(View view)
         {
-            Intent intent = new Intent(itemView.getContext(), ResultActivity.class);
+            Intent intent = new Intent(itemView.getContext(), FinalizeActivity.class);
             Bundle extras = new Bundle();
             extras.putInt("HOME",home_team);
-            extras.putInt("AWAY",getLayoutPosition());
+            extras.putString("AWAY",d1.teams.get(getLayoutPosition()));
             intent.putExtras(extras);
             itemView.getContext().startActivity(intent);
+            ((Activity)mcontext).finish();
         }
+
+
 
 
 
@@ -78,6 +76,11 @@ public class AwayAdapter extends RecyclerView.Adapter<AwayAdapter.AwayTeamViewHo
 
     }
 
+    public void delete (int pos)
+    {
+        d1.teams.remove(pos);
+        notifyItemRemoved(pos);
+    }
 
 
     public AwayAdapter(ArrayList<String> teams,int home_team)
@@ -108,10 +111,8 @@ public class AwayAdapter extends RecyclerView.Adapter<AwayAdapter.AwayTeamViewHo
     @Override
     public void onBindViewHolder(AwayTeamViewHolder awayTeamViewHolder, int i)
     {
-
         awayTeamViewHolder.teamName.setText(d1.teams.get(i));
-        String x = "e"+i;
-        int resourceId = awayTeamViewHolder.mcontext.getResources().getIdentifier(x, "drawable", "com.udacity.yaafl");
+        int resourceId = awayTeamViewHolder.mcontext.getResources().getIdentifier(TeamInfo.getTeamLogo(d1.teams.get(i)), "drawable", "com.udacity.yaafl");
         awayTeamViewHolder.away_teams.setImageDrawable(ContextCompat.getDrawable(awayTeamViewHolder.mcontext,resourceId));
 
     }

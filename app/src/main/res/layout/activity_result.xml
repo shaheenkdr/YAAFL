@@ -1,26 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
+    android:background="@color/ash"
+    android:paddingTop="20dp"
+    android:paddingEnd="10dp"
+    android:paddingStart="10dp"
     xmlns:ads="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        android:textSize="20sp"
-        android:id="@+id/resultText"
-        android:layout_centerInParent="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <android.support.v7.widget.CardView
+    android:id="@+id/teamCard1"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="7dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:textSize="20sp"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginTop="2dp"
+            android:id="@+id/team1ResultText"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <ImageView
+            android:layout_marginTop="5dp"
+            android:id="@+id/team1Result"
+            android:layout_below="@+id/team1ResultText"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
 
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/adView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+
+    </RelativeLayout>
+
+
+</android.support.v7.widget.CardView>
+    
+    <Button
+        android:id="@+id/processButton"
+        android:layout_marginTop="20dp"
+        android:textColor="#ffffff"
+        android:text="@string/calc"
+        android:layout_below="@+id/teamCard1"
+        android:background="@color/colorPrimary"
         android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        ads:adSize="BANNER"
-        ads:adUnitId="@string/banner_ad_unit_id">
-    </com.google.android.gms.ads.AdView>
+        android:layout_width="120dp"
+        android:layout_height="50dp" />
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/teamCard2"
+        android:layout_below="@+id/processButton"
+        android:layout_width="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_marginTop="20dp"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:textSize="20sp"
+                android:textColor="@color/colorPrimary"
+                android:layout_marginTop="2dp"
+                android:id="@+id/team2ResultText"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:layout_marginTop="5dp"
+                android:id="@+id/team2Result"
+                android:layout_below="@+id/team2ResultText"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+
+
+        </RelativeLayout>
+
+
+    </android.support.v7.widget.CardView>
+
+
+
 
 </RelativeLayout>

@@ -10,7 +10,7 @@ import android.util.DisplayMetrics;
 
 public class SpeedyLinearLayoutManager extends LinearLayoutManager {
 
-    private static final float MILLISECONDS_PER_INCH = 30f; //default is 25f (bigger = slower)
+    private static final float MILLISECONDS_PER_INCH = 70f; //default is 25f (bigger = slower)
 
     public SpeedyLinearLayoutManager(Context context) {
         super(context);

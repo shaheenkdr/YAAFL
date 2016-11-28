@@ -17,13 +17,45 @@ public class TeamInfo
                                                "Swansea","Tottenham","Watford",
                                                "West_Bromwich_Albion", "West_Ham"};
 
+    private static final String[] TEAM_NAME_PASS = {"Arsenal","Bournemouth","Burnley",
+            "Chelsea","Crystal Palace","Everton",
+            "Hull City","Leicester City","Liverpool",
+            "Manchester City","Manchester United","Middlesbrough",
+            "Southampton","Stoke City","Sunderland",
+            "Swansea City","Tottenham Hotspur","Watford",
+            "West Bromwich Albion", "West Ham United"};
+
     private static final int HOME_WIN_AVG = 46;
     private static final int AWAY_WIN_AVG = 27;
     private static HashMap<String,String> hm;
     private static HashMap<Integer,Integer> team_value;
+    private static HashMap<String,String> team_logo;
 
     static
     {
+        team_logo = new HashMap<>();
+        team_logo.put("Arsenal","e0");
+        team_logo.put("Bournemouth","e1");
+        team_logo.put("Burnley","e2");
+        team_logo.put("Chelsea","e3");
+        team_logo.put("Crystal Palace","e4");
+        team_logo.put("Everton","e5");
+        team_logo.put("Hull City","e6");
+        team_logo.put("Leicester City","e7");
+        team_logo.put("Liverpool","e8");
+        team_logo.put("Manchester City","e9");
+        team_logo.put("Manchester United","e10");
+        team_logo.put("Middlesbrough","e11");
+        team_logo.put("Southampton","e12");
+        team_logo.put("Stoke City","e13");
+        team_logo.put("Sunderland","e14");
+        team_logo.put("Swansea City","e15");
+        team_logo.put("Tottenham Hotspur","e16");
+        team_logo.put("Watford","e17");
+        team_logo.put("West Bromwich Albion","e18");
+        team_logo.put("West Ham United","e19");
+
+
         hm = new HashMap<>();
         hm.put("Arsenal VS Bournemouth", "M1X");
         hm.put("Arsenal VS Burnley", "M2X");
@@ -420,7 +452,7 @@ public class TeamInfo
         int val = -1;
         for(int i=0;i<TEAM_NAME.length;i++)
         {
-            if(name.equals(TEAM_NAME[i]))
+            if(name.equals(TEAM_NAME_PASS[i]))
             {
                 val = i;
                 break;
@@ -428,6 +460,11 @@ public class TeamInfo
         }
 
         return val;
+    }
+
+    public static String getTeamLogo(String id)
+    {
+        return team_logo.get(id);
     }
 
     public static String getMatchId(String game)
@@ -453,6 +490,16 @@ public class TeamInfo
 
         else
             return TEAM_NAME[id];
+
+    }
+
+    public static String getTeamNameForView(int id)
+    {
+        if(id>=20 ||id<0)
+            return "";
+
+        else
+            return TEAM_NAME_PASS[id];
 
     }
 

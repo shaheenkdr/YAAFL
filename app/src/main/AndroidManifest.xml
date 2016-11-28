@@ -24,19 +24,20 @@
             android:value="61a0becf015c25aebd53d539aea6b732c77e1890" />
 
         <activity android:name=".activities.HomeTeamSelector" />
-        <activity android:name=".activities.AwayTeamSelector"></activity>
-        <activity android:name=".activities.ResultActivity"></activity>
+        <activity android:name=".activities.AwayTeamSelector" />
+        <activity android:name=".activities.FinalizeActivity" />
 
         <receiver android:name=".widget.Widget">
-
             <intent-filter>
-                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"></action>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
 
-            <meta-data android:name="android.appwidget.provider"
-                android:resource="@xml/appwidgetprovider"></meta-data>
-
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/appwidgetprovider" />
         </receiver>
+
+        <activity android:name=".activities.FinalResultActivity"></activity>
     </application>
 
 </manifest>
