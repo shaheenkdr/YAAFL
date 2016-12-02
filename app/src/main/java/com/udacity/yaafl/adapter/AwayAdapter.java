@@ -62,7 +62,7 @@ public class AwayAdapter extends RecyclerView.Adapter<AwayAdapter.AwayTeamViewHo
             extras.putString("AWAY",d1.teams.get(getLayoutPosition()));
             intent.putExtras(extras);
             ActivityOptionsCompat options = ActivityOptionsCompat.
-                    makeSceneTransitionAnimation((Activity)mcontext, (View)away_teams, "appcard");
+                    makeSceneTransitionAnimation((Activity)mcontext, away_teams, "appcard");
             itemView.getContext().startActivity(intent,options.toBundle());
             ((Activity)mcontext).finish();
         }
@@ -101,8 +101,7 @@ public class AwayAdapter extends RecyclerView.Adapter<AwayAdapter.AwayTeamViewHo
     @Override
     public AwayTeamViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.away_card, viewGroup, false);
-        AwayTeamViewHolder pvh = new AwayTeamViewHolder(v);
-        return pvh;
+        return new AwayTeamViewHolder(v);
     }
 
 

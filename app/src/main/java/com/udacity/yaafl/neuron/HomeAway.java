@@ -1,17 +1,7 @@
 package com.udacity.yaafl.neuron;
 
-import android.util.Log;
-import com.firebase.client.DataSnapshot;
-import com.firebase.client.Firebase;
-import com.firebase.client.FirebaseError;
-import com.firebase.client.ValueEventListener;
-import com.udacity.yaafl.event_bus.HomeAwayEvent;
-import com.udacity.yaafl.firebase_db.Situational;
+
 import com.udacity.yaafl.utility.TeamInfo;
-
-import org.greenrobot.eventbus.EventBus;
-
-import java.util.ArrayList;
 import java.util.List;
 
 /**

@@ -2,7 +2,7 @@ package com.udacity.yaafl.adapter;
 
 
 import android.app.Activity;
-import android.app.ActivityOptions;
+
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -21,7 +21,7 @@ import com.elmargomez.typer.Font;
 import com.elmargomez.typer.Typer;
 import com.udacity.yaafl.R;
 import com.udacity.yaafl.activities.AwayTeamSelector;
-import com.udacity.yaafl.activities.HomeTeamSelector;
+
 
 import java.util.ArrayList;
 
@@ -35,7 +35,6 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeTeamViewHo
     public  class HomeTeamViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
     {
         private TextView teamName;
-        private Typeface face;
         private ImageView home_teams;
         private Context mcontext;
 
@@ -60,7 +59,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeTeamViewHo
             Log.e("TEST",""+getLayoutPosition());
             intent.putExtras(extras);
             ActivityOptionsCompat options = ActivityOptionsCompat.
-                    makeSceneTransitionAnimation((Activity)mcontext, (View)home_teams, "appcard");
+                    makeSceneTransitionAnimation((Activity)mcontext, home_teams, "appcard");
             itemView.getContext().startActivity(intent, options.toBundle());
 
             ((Activity)mcontext).finish();
@@ -95,8 +94,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeTeamViewHo
     @Override
     public HomeTeamViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.home_card, viewGroup, false);
-        HomeTeamViewHolder pvh = new HomeTeamViewHolder(v);
-        return pvh;
+        return new HomeTeamViewHolder(v);
     }
 
 

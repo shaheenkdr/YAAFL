@@ -1,7 +1,6 @@
 package com.udacity.yaafl.neuron;
 
 
-import android.util.Log;
 
 import com.udacity.yaafl.cohesion.Pass;
 import com.udacity.yaafl.cohesion.Shot;

@@ -1,15 +1,8 @@
 package com.udacity.yaafl.neuron;
 
-import com.firebase.client.DataSnapshot;
-import com.firebase.client.Firebase;
-import com.firebase.client.FirebaseError;
-import com.firebase.client.ValueEventListener;
-import com.udacity.yaafl.event_bus.Head2HeadEvent;
-import com.udacity.yaafl.event_bus.MotivationEvent;
-import com.udacity.yaafl.firebase_db.Head2Head;
+
 import com.udacity.yaafl.utility.TeamInfo;
 
-import org.greenrobot.eventbus.EventBus;
 
 import java.util.List;
 
@@ -23,7 +16,7 @@ public class TeamHeadToHead
     private int team1_id;
     private int team2_id;
     private int[] score;
-    private Firebase fRef;
+
     private List<com.udacity.yaafl.cohesion.Head2Head> head;
     public TeamHeadToHead(List<com.udacity.yaafl.cohesion.Head2Head>head,int team1, int team2)
     {

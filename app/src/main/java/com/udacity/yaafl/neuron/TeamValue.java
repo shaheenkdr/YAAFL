@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 public class TeamValue
 {
-    private static int team_id;
+    private int team_id;
     private static HashMap<Integer,Integer> team_values;
 
     static

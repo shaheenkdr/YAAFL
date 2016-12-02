@@ -34,8 +34,8 @@ import java.util.ArrayList;
 
 public class AwayTeamSelector extends AppCompatActivity
 {
-    private static int homeTeam;
-    private static ArrayList<String> team_list;
+
+
     private CollapsingToolbarLayout collapsingToolbarLayout = null;
 
 
@@ -47,9 +47,9 @@ public class AwayTeamSelector extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_away_team_selector);
         Bundle extras = getIntent().getExtras();
-        homeTeam = extras.getInt("HOME");
+        int homeTeam = extras.getInt("HOME");
 
-        team_list = new ArrayList<>();
+        ArrayList<String> team_list = new ArrayList<>();
         for(int i=0;i<20;i++)
         {
             if(i!=homeTeam)

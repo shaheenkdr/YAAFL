@@ -7,7 +7,6 @@ import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.graphics.Palette;
@@ -46,7 +45,6 @@ public class HomeTeamSelector extends AppCompatActivity
         setupWindowAnimations();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        ActionBar actionBar = getSupportActionBar();
         final AppBarLayout abl = (AppBarLayout)findViewById(R.id.appbarhome);
 
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);

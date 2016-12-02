@@ -10,11 +10,9 @@ import android.transition.Fade;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.ImageView;
 
 import com.crashlytics.android.Crashlytics;
 import com.udacity.yaafl.R;
-import org.greenrobot.eventbus.EventBus;
 import io.fabric.sdk.android.Fabric;
 
 public class SplashActivity extends AppCompatActivity {
@@ -27,8 +25,6 @@ public class SplashActivity extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash);
         setupWindowAnimations();
-        ImageView im1 = (ImageView)findViewById(R.id.cupImage);
-        //im1.setScaleType(ImageView.ScaleType.FIT_CENTER);
         View view = getLayoutInflater().inflate(R.layout.activity_splash, null);
         final ActivityOptionsCompat options = ActivityOptionsCompat.
                 makeSceneTransitionAnimation(this, view, "splash");
@@ -46,7 +42,6 @@ public class SplashActivity extends AppCompatActivity {
 
             }
         }, secondsDelayed * 2000);
-        //getPasses();
 
 
     }
