@@ -79,11 +79,7 @@ public class AwayAdapter extends RecyclerView.Adapter<AwayAdapter.AwayTeamViewHo
 
     }
 
-    public void delete (int pos)
-    {
-        d1.teams.remove(pos);
-        notifyItemRemoved(pos);
-    }
+
 
 
     public AwayAdapter(ArrayList<String> teams,int home_team)

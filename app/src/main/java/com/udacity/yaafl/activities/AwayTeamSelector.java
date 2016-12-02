@@ -38,12 +38,9 @@ public class AwayTeamSelector extends AppCompatActivity
     private static ArrayList<String> team_list;
     private CollapsingToolbarLayout collapsingToolbarLayout = null;
 
-    static
-    {
-        team_list = new ArrayList<>();
-        for(int i=0;i<20;i++)
-            team_list.add(TeamInfo.getTeamNameForView(i));
-    }
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +48,13 @@ public class AwayTeamSelector extends AppCompatActivity
         setContentView(R.layout.activity_away_team_selector);
         Bundle extras = getIntent().getExtras();
         homeTeam = extras.getInt("HOME");
+
+        team_list = new ArrayList<>();
+        for(int i=0;i<20;i++)
+        {
+            if(i!=homeTeam)
+            team_list.add(TeamInfo.getTeamNameForView(i));
+        }
         setupWindowAnimations();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_away);
         final AppBarLayout abl = (AppBarLayout)findViewById(R.id.appBarAway);
@@ -72,7 +76,7 @@ public class AwayTeamSelector extends AppCompatActivity
         rView.setLayoutManager(llm);
         AwayAdapter awayAdapter = new AwayAdapter(team_list,homeTeam);
         rView.setAdapter(awayAdapter);
-        awayAdapter.delete(homeTeam);
+
 
         FloatingActionButton fab = (FloatingActionButton)findViewById(R.id.fabAway);
         fab.setOnClickListener(new View.OnClickListener() {
