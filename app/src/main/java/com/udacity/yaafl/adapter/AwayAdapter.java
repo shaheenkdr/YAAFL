@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -60,7 +61,9 @@ public class AwayAdapter extends RecyclerView.Adapter<AwayAdapter.AwayTeamViewHo
             extras.putInt("HOME",home_team);
             extras.putString("AWAY",d1.teams.get(getLayoutPosition()));
             intent.putExtras(extras);
-            itemView.getContext().startActivity(intent);
+            ActivityOptionsCompat options = ActivityOptionsCompat.
+                    makeSceneTransitionAnimation((Activity)mcontext, (View)away_teams, "appcard");
+            itemView.getContext().startActivity(intent,options.toBundle());
             ((Activity)mcontext).finish();
         }
 

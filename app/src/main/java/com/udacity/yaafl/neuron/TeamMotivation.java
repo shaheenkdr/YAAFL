@@ -42,12 +42,12 @@ public class TeamMotivation
 
                 if(home_away)
                 {
-                    motivation_score = temp+TeamInfo.getHomeWinAvg()+home_away_score;
+                    motivation_score = temp+(TeamInfo.getHomeWinAvg()/4)+(home_away_score/4);
                 }
 
                 else
                 {
-                    motivation_score = temp+TeamInfo.getAwayWinAvg()+home_away_score;
+                    motivation_score = temp+(TeamInfo.getAwayWinAvg()/4)+(home_away_score/4);
                 }
 
             }

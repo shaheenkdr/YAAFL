@@ -1,5 +1,6 @@
 package com.udacity.yaafl.activities;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
@@ -17,6 +18,7 @@ import android.support.v7.widget.Toolbar;
 import android.transition.Explode;
 import android.transition.Fade;
 import android.transition.Slide;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 
@@ -87,9 +89,9 @@ public class AwayTeamSelector extends AppCompatActivity
     }
 
     private void setupWindowAnimations() {
-        Explode exp = new Explode();
-        exp.setDuration(1000);
-        getWindow().setEnterTransition(exp);
+        Fade fade = new Fade();
+        fade.setDuration(1000);
+        getWindow().setEnterTransition(fade);
     }
 
     private void dynamicToolbarColor() {
@@ -109,5 +111,14 @@ public class AwayTeamSelector extends AppCompatActivity
     private void toolbarTextAppearence() {
         collapsingToolbarLayout.setCollapsedTitleTextAppearance(R.style.collapsedappbar);
         collapsingToolbarLayout.setExpandedTitleTextAppearance(R.style.expandedappbar);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item)
+    {
+            Intent intent = new Intent(AwayTeamSelector.this,HomeTeamSelector.class);
+            startActivity(intent);
+            finish();
+        return super.onOptionsItemSelected(item);
     }
 }

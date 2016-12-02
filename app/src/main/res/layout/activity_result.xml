@@ -3,7 +3,6 @@
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:background="@color/ash"
-    android:paddingTop="20dp"
     android:paddingEnd="10dp"
     android:paddingStart="10dp"
     xmlns:ads="http://schemas.android.com/apk/res-auto">
@@ -11,8 +10,8 @@
     <android.support.v7.widget.CardView
     android:id="@+id/teamCard1"
     android:layout_width="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginTop="7dp"
+    android:layout_alignParentTop="true"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="wrap_content">
 
@@ -51,7 +50,7 @@
         android:layout_marginTop="20dp"
         android:textColor="#ffffff"
         android:text="@string/calc"
-        android:layout_below="@+id/teamCard1"
+        android:layout_centerInParent="true"
         android:background="@color/colorPrimary"
         android:layout_centerHorizontal="true"
         android:layout_width="120dp"
@@ -59,7 +58,7 @@
 
     <android.support.v7.widget.CardView
         android:id="@+id/teamCard2"
-        android:layout_below="@+id/processButton"
+        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_marginTop="20dp"

@@ -42,7 +42,7 @@ public class TeamValue
     public int getTeamValueScore()
     {
         if(team_id>=0 && team_id<=19)
-            return team_values.get(team_id)/10;
+            return team_values.get(team_id)/20;
         else
             return -1;
     }

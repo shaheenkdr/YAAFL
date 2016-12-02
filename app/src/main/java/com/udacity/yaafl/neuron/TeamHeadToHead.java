@@ -44,8 +44,8 @@ public class TeamHeadToHead
 
                         if(versus.getMatchID().equals(MID))
                         {
-                            score[0] = versus.getTeam1();
-                            score[1] = versus.getTeam2();
+                            score[0] = versus.getTeam1()*4;
+                            score[1] = versus.getTeam2()*4;
                             break;
                         }
                     }

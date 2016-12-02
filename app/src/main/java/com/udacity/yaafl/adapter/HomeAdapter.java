@@ -63,6 +63,8 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeTeamViewHo
                     makeSceneTransitionAnimation((Activity)mcontext, (View)home_teams, "appcard");
             itemView.getContext().startActivity(intent, options.toBundle());
 
+            ((Activity)mcontext).finish();
+
         }
 
 

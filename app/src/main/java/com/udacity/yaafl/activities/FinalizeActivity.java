@@ -6,6 +6,8 @@ import android.graphics.Typeface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
+import android.transition.Explode;
+import android.transition.Fade;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -38,6 +40,7 @@ public class FinalizeActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
+        setupWindowAnimations();
         pr = new ProgressDialog(FinalizeActivity.this);
         EventBus.getDefault().register(this);
         Bundle extras = getIntent().getExtras();
@@ -80,6 +83,13 @@ public class FinalizeActivity extends AppCompatActivity
 
     }
 
+    private void setupWindowAnimations() {
+        Explode exp = new Explode();
+        exp.setDuration(1000);
+
+        getWindow().setEnterTransition(exp);
+    }
+
 
     private void getPasses(final int home, final int away)
     {
@@ -117,5 +127,7 @@ public class FinalizeActivity extends AppCompatActivity
         finish();
 
     }
+
+
 
 }

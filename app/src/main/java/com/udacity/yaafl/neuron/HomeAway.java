@@ -47,9 +47,10 @@ public class HomeAway
                 if(situation_data.getHome() && situation_data.getTeam().equals(TeamInfo.getTeamName(team_id)))
                 {
                     home_wins = (int)((double)(situation_data.getWon())/(double)(situation_data.getMatchPlayed())*100);
+                    home_wins -= situation_data.getLose()*10;
                 }
             }
-            return home_wins;
+            return home_wins*2;
         }
 
         else
@@ -59,9 +60,10 @@ public class HomeAway
                 if(situation_data.getAway() && situation_data.getTeam().equals(TeamInfo.getTeamName(team_id)))
                 {
                     away_wins = (int)((double)(situation_data.getWon())/(double)(situation_data.getMatchPlayed())*100);
+                    away_wins -= situation_data.getLose()*5;
                 }
             }
-            return away_wins;
+            return away_wins*2;
         }
 
 

@@ -1,6 +1,8 @@
 package com.udacity.yaafl.neuron;
 
 
+import android.util.Log;
+
 import com.udacity.yaafl.cohesion.Pass;
 import com.udacity.yaafl.cohesion.Shot;
 
@@ -47,11 +49,12 @@ public class TeamCohesion
 
     public int computeTeamCohesion()
     {
-        return (int)getSummary()+getShots()+getPasses()+getSituationalAnalysis();
+        int result = (getSummary()+getShots()+getPasses()+(getSituationalAnalysis()/2))/4;
+        return 3*result;
     }
 
 
-    private double getSummary()
+    private int getSummary()
     {
 
         for(com.udacity.yaafl.cohesion.Summary team_summary: summary)
@@ -59,10 +62,11 @@ public class TeamCohesion
             if(team_summary.getTeam().equals(TeamInfo.getTeamName(team_id)))
             {
 
-                return team_summary.getScore();
+                double x = team_summary.getScore()*10;
+                return (int)x;
             }
         }
-        return 0.0;
+        return 0;
     }
 
     private int getPasses()
@@ -75,9 +79,7 @@ public class TeamCohesion
 
                 if(pass_val.getTeam().equals(TeamInfo.getTeamName(team_id)) && pass_val.getHomeFactor())
                 {
-                    final int pass_score = pass_val.getCross()+pass_val.getLongBall()+pass_val.getShortPass()+pass_val.getThroughBall();
-                    passes_score = pass_score;
-
+                    passes_score = pass_val.getCross()+pass_val.getLongBall()+(pass_val.getShortPass()/10)+(pass_val.getThroughBall()*10);
                 }
             }
             else
@@ -85,8 +87,7 @@ public class TeamCohesion
 
                 if(pass_val.getTeam().equals(TeamInfo.getTeamName(team_id)) && pass_val.getAwayFactor())
                 {
-                    final int pass_score = pass_val.getCross()+pass_val.getLongBall()+pass_val.getShortPass()+pass_val.getThroughBall();
-                    passes_score = pass_score;
+                    passes_score = pass_val.getCross()+pass_val.getLongBall()+(pass_val.getShortPass()/10)+(pass_val.getThroughBall()*10);
                 }
 
             }
