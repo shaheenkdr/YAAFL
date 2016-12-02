@@ -110,9 +110,10 @@ public class AwayAdapter extends RecyclerView.Adapter<AwayAdapter.AwayTeamViewHo
     public void onBindViewHolder(AwayTeamViewHolder awayTeamViewHolder, int i)
     {
         awayTeamViewHolder.teamName.setText(d1.teams.get(i));
+        awayTeamViewHolder.teamName.setContentDescription("Team name:"+d1.teams.get(i));
         int resourceId = awayTeamViewHolder.mcontext.getResources().getIdentifier(TeamInfo.getTeamLogo(d1.teams.get(i)), "drawable", "com.udacity.yaafl");
         awayTeamViewHolder.away_teams.setImageDrawable(ContextCompat.getDrawable(awayTeamViewHolder.mcontext,resourceId));
-
+        awayTeamViewHolder.away_teams.setContentDescription("Team Image:"+d1.teams.get(i));
     }
 
     @Override

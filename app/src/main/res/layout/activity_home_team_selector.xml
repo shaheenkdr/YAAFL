@@ -2,6 +2,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    android:contentDescription="@string/homex"
     android:layout_height="match_parent">
 
     <android.support.design.widget.AppBarLayout
@@ -24,6 +25,7 @@
                 android:layout_height="match_parent">
             <ImageView
                 android:layout_centerHorizontal="true"
+                android:contentDescription="@string/barclays"
                 android:layout_width="200dp"
                 android:layout_height="200dp"
                 android:src="@drawable/bpl1"
@@ -31,6 +33,7 @@
 
                 <android.support.design.widget.FloatingActionButton
                     android:id="@+id/fab"
+                    android:contentDescription="@string/scroll"
                     android:layout_alignParentEnd="true"
                     android:src="@drawable/ic_keyboard_arrow_down_white_36dp"
                     android:layout_alignParentBottom="true"
@@ -61,6 +64,7 @@
 
 
             <android.support.v7.widget.RecyclerView
+                android:contentDescription="@string/rview1"
                 android:id="@+id/homeTeamRView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

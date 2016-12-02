@@ -16,7 +16,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.elmargomez.typer.Font;
 import com.elmargomez.typer.Typer;
 import com.udacity.yaafl.R;
@@ -104,10 +103,11 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeTeamViewHo
     {
 
         homeTeamViewHolder.teamName.setText(d1.teams.get(i));
+        homeTeamViewHolder.teamName.setContentDescription("Team name:"+d1.teams.get(i));
         String x = "e"+i;
         int resourceId = homeTeamViewHolder.mcontext.getResources().getIdentifier(x, "drawable", "com.udacity.yaafl");
         homeTeamViewHolder.home_teams.setImageDrawable(ContextCompat.getDrawable(homeTeamViewHolder.mcontext,resourceId));
-
+        homeTeamViewHolder.home_teams.setContentDescription("Team Image:"+d1.teams.get(i));
     }
 
     @Override

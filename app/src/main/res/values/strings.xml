@@ -5,4 +5,18 @@
     <string name="away_team">CHOOSE AWAY TEAM</string>
     <string name="calc">process</string>
     <string name="banner_ad_unit_id">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="rview1">Home team list</string>
+    <string name="rview2">Away team list</string>
+    <string name="scroll">Scrolling list of teams</string>
+    <string name="barclays">English premier league logo</string>
+    <string name="homex">Choose home team</string>
+    <string name="homey">home team image</string>
+    <string name="awayx">Choose away team</string>
+    <string name="awayy">away team image</string>
+    <string name="ads">Google Ads</string>
+    <string name="share">Share app</string>
+    <string name="pred">Make another prediction</string>
+    <string name="goal">goal image</string>
+    <string name="predict">predict match winner button</string>
+    <string name="splash">splash screen</string>
 </resources>

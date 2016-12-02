@@ -42,6 +42,7 @@ public class FinalResultActivity extends AppCompatActivity {
         Typeface font = Typer.set(this).getFont(Font.ROBOTO_BOLD);
         t1.setTypeface(font);
         t1.setText(sx.toString().toUpperCase());
+        t1.setContentDescription(sx.toString()+"Wins");
         MobileAds.initialize(getApplicationContext(), "ca-app-pub-3940256099942544~3347511713");
         AdView mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
