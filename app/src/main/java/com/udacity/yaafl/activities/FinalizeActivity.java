@@ -64,7 +64,7 @@ public class FinalizeActivity extends AppCompatActivity {
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                pr.setMessage("processing data");
+                pr.setMessage(getString(R.string.pro));
                 pr.isIndeterminate();
                 pr.show();
                 getPasses(homeTeam, TeamInfo.getTeamId(awayTeam));

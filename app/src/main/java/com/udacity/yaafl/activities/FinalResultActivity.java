@@ -52,7 +52,7 @@ public class FinalResultActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 new AlertDialog.Builder(FinalResultActivity.this)
-                        .setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                        .setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 finish();
@@ -60,9 +60,9 @@ public class FinalResultActivity extends AppCompatActivity {
                                 startActivity(intent);
                             }
                         })
-                        .setNegativeButton("No", null)
-                        .setTitle("Predict")
-                        .setMessage("Would you like to predict another match?")
+                        .setNegativeButton(getString(R.string.no), null)
+                        .setTitle(getString(R.string.predict))
+                        .setMessage(getString(R.string.another))
                         .show();
 
 
@@ -74,20 +74,19 @@ public class FinalResultActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 new AlertDialog.Builder(FinalResultActivity.this)
-                        .setPositiveButton("yes", new DialogInterface.OnClickListener() {
+                        .setPositiveButton(getString(R.string.yes), new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
                                 Intent sendIntent = new Intent();
                                 sendIntent.setAction(Intent.ACTION_SEND);
-                                sendIntent.putExtra(Intent.EXTRA_TEXT,
-                                        "Hey check out my app at: https://play.google.com/store/apps/details?id=com.google.android.apps.plus");
+                                sendIntent.putExtra(Intent.EXTRA_TEXT,getString(R.string.checkapp));
                                 sendIntent.setType("text/plain");
                                 startActivity(sendIntent);
                             }
                         })
-                        .setNegativeButton("No", null)
-                        .setTitle("Share")
-                        .setMessage("Share the app with friends?")
+                        .setNegativeButton(getString(R.string.no), null)
+                        .setTitle(getString(R.string.share))
+                        .setMessage(getString(R.string.shareapp))
                         .show();
 
 

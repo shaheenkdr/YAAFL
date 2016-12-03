@@ -19,4 +19,12 @@
     <string name="goal">goal image</string>
     <string name="predict">predict match winner button</string>
     <string name="splash">splash screen</string>
+    <string name="pro">processing data</string>
+    <string name="yes">yes</string>
+    <string name="no">no</string>
+    <string name="predictx">Predict</string>
+    <string name="another">Would you like to predict another match ?</string>
+    <string name="shareapp">Share the app with friends?</string>
+    <string name="checkapp" translatable="false">Hey check out my app at: https://play.google.com/store/apps/details?id=com.google.android.apps.plus</string>
+
 </resources>

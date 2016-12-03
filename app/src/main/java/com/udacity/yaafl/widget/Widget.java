@@ -16,7 +16,7 @@ import com.udacity.yaafl.activities.HomeTeamSelector;
 
 
 public class Widget extends AppWidgetProvider {
-    private static String YOUR_AWESOME_ACTION = "YourAwesomeAction";
+
 
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         for (int appWidgetId : appWidgetIds) {

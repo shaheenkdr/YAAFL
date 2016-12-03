@@ -51,7 +51,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeTeamViewHo
             Intent intent = new Intent(itemView.getContext(), AwayTeamSelector.class);
             Bundle extras = new Bundle();
             extras.putInt("HOME", getLayoutPosition());
-            Log.e("TEST", "" + getLayoutPosition());
+
             intent.putExtras(extras);
             ActivityOptionsCompat options = ActivityOptionsCompat.
                     makeSceneTransitionAnimation((Activity) mcontext, home_teams, "appcard");
