@@ -13,10 +13,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "Draw",
-    "MatchID",
-    "Team1",
-    "Team2"
+        "Draw",
+        "MatchID",
+        "Team1",
+        "Team2"
 })
 public class Head2Head {
 
@@ -32,9 +32,7 @@ public class Head2Head {
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
-     * 
-     * @return
-     *     The draw
+     * @return The draw
      */
     @JsonProperty("Draw")
     public Integer getDraw() {
@@ -42,9 +40,7 @@ public class Head2Head {
     }
 
     /**
-     * 
-     * @param draw
-     *     The Draw
+     * @param draw The Draw
      */
     @JsonProperty("Draw")
     public void setDraw(Integer draw) {
@@ -52,9 +48,7 @@ public class Head2Head {
     }
 
     /**
-     * 
-     * @return
-     *     The matchID
+     * @return The matchID
      */
     @JsonProperty("MatchID")
     public String getMatchID() {
@@ -62,9 +56,7 @@ public class Head2Head {
     }
 
     /**
-     * 
-     * @param matchID
-     *     The MatchID
+     * @param matchID The MatchID
      */
     @JsonProperty("MatchID")
     public void setMatchID(String matchID) {
@@ -72,9 +64,7 @@ public class Head2Head {
     }
 
     /**
-     * 
-     * @return
-     *     The team1
+     * @return The team1
      */
     @JsonProperty("Team1")
     public Integer getTeam1() {
@@ -82,9 +72,7 @@ public class Head2Head {
     }
 
     /**
-     * 
-     * @param team1
-     *     The Team1
+     * @param team1 The Team1
      */
     @JsonProperty("Team1")
     public void setTeam1(Integer team1) {
@@ -92,9 +80,7 @@ public class Head2Head {
     }
 
     /**
-     * 
-     * @return
-     *     The team2
+     * @return The team2
      */
     @JsonProperty("Team2")
     public Integer getTeam2() {
@@ -102,9 +88,7 @@ public class Head2Head {
     }
 
     /**
-     * 
-     * @param team2
-     *     The Team2
+     * @param team2 The Team2
      */
     @JsonProperty("Team2")
     public void setTeam2(Integer team2) {

@@ -2,6 +2,7 @@ package com.udacity.yaafl.firebase_db;
 
 import java.util.HashMap;
 import java.util.Map;
+
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -51,9 +52,7 @@ public class Situational {
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
-     *
-     * @return
-     * The away
+     * @return The away
      */
     @JsonProperty("Away")
     public Boolean getAway() {
@@ -61,9 +60,7 @@ public class Situational {
     }
 
     /**
-     *
-     * @param away
-     * The Away
+     * @param away The Away
      */
     @JsonProperty("Away")
     public void setAway(Boolean away) {
@@ -71,9 +68,7 @@ public class Situational {
     }
 
     /**
-     *
-     * @return
-     * The counterAttack
+     * @return The counterAttack
      */
     @JsonProperty("Counter_Attack")
     public Integer getCounterAttack() {
@@ -81,9 +76,7 @@ public class Situational {
     }
 
     /**
-     *
-     * @param counterAttack
-     * The Counter_Attack
+     * @param counterAttack The Counter_Attack
      */
     @JsonProperty("Counter_Attack")
     public void setCounterAttack(Integer counterAttack) {
@@ -91,9 +84,7 @@ public class Situational {
     }
 
     /**
-     *
-     * @return
-     * The home
+     * @return The home
      */
     @JsonProperty("Home")
     public Boolean getHome() {
@@ -101,9 +92,7 @@ public class Situational {
     }
 
     /**
-     *
-     * @param home
-     * The Home
+     * @param home The Home
      */
     @JsonProperty("Home")
     public void setHome(Boolean home) {
@@ -111,9 +100,7 @@ public class Situational {
     }
 
     /**
-     *
-     * @return
-     * The lose
+     * @return The lose
      */
     @JsonProperty("Lose")
     public Integer getLose() {
@@ -121,9 +108,7 @@ public class Situational {
     }
 
     /**
-     *
-     * @param lose
-     * The Lose
+     * @param lose The Lose
      */
     @JsonProperty("Lose")
     public void setLose(Integer lose) {
@@ -131,9 +116,7 @@ public class Situational {
     }
 
     /**
-     *
-     * @return
-     * The matchPlayed
+     * @return The matchPlayed
      */
     @JsonProperty("Match_Played")
     public Integer getMatchPlayed() {
@@ -141,9 +124,7 @@ public class Situational {
     }
 
     /**
-     *
-     * @param matchPlayed
-     * The Match_Played
+     * @param matchPlayed The Match_Played
      */
     @JsonProperty("Match_Played")
     public void setMatchPlayed(Integer matchPlayed) {
@@ -151,9 +132,7 @@ public class Situational {
     }
 
     /**
-     *
-     * @return
-     * The openPlay
+     * @return The openPlay
      */
     @JsonProperty("Open_Play")
     public Integer getOpenPlay() {
@@ -161,9 +140,7 @@ public class Situational {
     }
 
     /**
-     *
-     * @param openPlay
-     * The Open_Play
+     * @param openPlay The Open_Play
      */
     @JsonProperty("Open_Play")
     public void setOpenPlay(Integer openPlay) {
@@ -171,9 +148,7 @@ public class Situational {
     }
 
     /**
-     *
-     * @return
-     * The ownGoal
+     * @return The ownGoal
      */
     @JsonProperty("Own_goal")
     public Integer getOwnGoal() {
@@ -181,9 +156,7 @@ public class Situational {
     }
 
     /**
-     *
-     * @param ownGoal
-     * The Own_goal
+     * @param ownGoal The Own_goal
      */
     @JsonProperty("Own_goal")
     public void setOwnGoal(Integer ownGoal) {
@@ -191,9 +164,7 @@ public class Situational {
     }
 
     /**
-     *
-     * @return
-     * The penalty
+     * @return The penalty
      */
     @JsonProperty("Penalty")
     public Integer getPenalty() {
@@ -201,9 +172,7 @@ public class Situational {
     }
 
     /**
-     *
-     * @param penalty
-     * The Penalty
+     * @param penalty The Penalty
      */
     @JsonProperty("Penalty")
     public void setPenalty(Integer penalty) {
@@ -211,9 +180,7 @@ public class Situational {
     }
 
     /**
-     *
-     * @return
-     * The setPiece
+     * @return The setPiece
      */
     @JsonProperty("Set_Piece")
     public Integer getSetPiece() {
@@ -221,9 +188,7 @@ public class Situational {
     }
 
     /**
-     *
-     * @param setPiece
-     * The Set_Piece
+     * @param setPiece The Set_Piece
      */
     @JsonProperty("Set_Piece")
     public void setSetPiece(Integer setPiece) {
@@ -231,9 +196,7 @@ public class Situational {
     }
 
     /**
-     *
-     * @return
-     * The team
+     * @return The team
      */
     @JsonProperty("Team")
     public String getTeam() {
@@ -241,9 +204,7 @@ public class Situational {
     }
 
     /**
-     *
-     * @param team
-     * The Team
+     * @param team The Team
      */
     @JsonProperty("Team")
     public void setTeam(String team) {
@@ -251,9 +212,7 @@ public class Situational {
     }
 
     /**
-     *
-     * @return
-     * The won
+     * @return The won
      */
     @JsonProperty("Won")
     public Integer getWon() {
@@ -261,9 +220,7 @@ public class Situational {
     }
 
     /**
-     *
-     * @param won
-     * The Won
+     * @param won The Won
      */
     @JsonProperty("Won")
     public void setWon(Integer won) {

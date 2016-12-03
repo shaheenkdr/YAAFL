@@ -1,23 +1,19 @@
 package com.udacity.yaafl.event_bus;
 
-public class CohesionEvent
-{
+public class CohesionEvent {
     private final int COHESION_SCORE;
     private final boolean FLAG;
 
-    public CohesionEvent(int cohesion,boolean flag)
-    {
+    public CohesionEvent(int cohesion, boolean flag) {
         this.COHESION_SCORE = cohesion;
         this.FLAG = flag;
     }
 
-    public int getCohesionScore()
-    {
+    public int getCohesionScore() {
         return COHESION_SCORE;
     }
 
-    public boolean isHomeorAway()
-    {
+    public boolean isHomeorAway() {
         return FLAG;
     }
 }

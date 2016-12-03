@@ -23,29 +23,24 @@ import com.udacity.yaafl.utility.TeamInfo;
 
 import java.util.ArrayList;
 
-public class AwayAdapter extends RecyclerView.Adapter<AwayAdapter.AwayTeamViewHolder>
-{
-
+public class AwayAdapter extends RecyclerView.Adapter<AwayAdapter.AwayTeamViewHolder> {
 
 
     private DataHolder d1 = new DataHolder();
     private int home_team;
 
 
-    public  class AwayTeamViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
-    {
+    public class AwayTeamViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView teamName;
         private ImageView away_teams;
         private Context mcontext;
 
 
-
-        AwayTeamViewHolder(View itemView)
-        {
+        AwayTeamViewHolder(View itemView) {
             super(itemView);
             mcontext = itemView.getContext();
-            away_teams = (ImageView)itemView.findViewById(R.id.awayTeamImage);
-            teamName = (TextView)itemView.findViewById(R.id.awayTeamName);
+            away_teams = (ImageView) itemView.findViewById(R.id.awayTeamImage);
+            teamName = (TextView) itemView.findViewById(R.id.awayTeamName);
             Typeface font = Typer.set(mcontext).getFont(Font.ROBOTO_MEDIUM);
             teamName.setTypeface(font);
 
@@ -54,42 +49,33 @@ public class AwayAdapter extends RecyclerView.Adapter<AwayAdapter.AwayTeamViewHo
         }
 
         @Override
-        public void onClick(View view)
-        {
+        public void onClick(View view) {
             Intent intent = new Intent(itemView.getContext(), FinalizeActivity.class);
             Bundle extras = new Bundle();
-            extras.putInt("HOME",home_team);
-            extras.putString("AWAY",d1.teams.get(getLayoutPosition()));
+            extras.putInt("HOME", home_team);
+            extras.putString("AWAY", d1.teams.get(getLayoutPosition()));
             intent.putExtras(extras);
             ActivityOptionsCompat options = ActivityOptionsCompat.
-                    makeSceneTransitionAnimation((Activity)mcontext, away_teams, "appcard");
-            itemView.getContext().startActivity(intent,options.toBundle());
-            ((Activity)mcontext).finish();
+                    makeSceneTransitionAnimation((Activity) mcontext, away_teams, "appcard");
+            itemView.getContext().startActivity(intent, options.toBundle());
+            ((Activity) mcontext).finish();
         }
-
-
-
 
 
     }
 
-    private static class DataHolder
-    {
+    private static class DataHolder {
         ArrayList<String> teams;
 
     }
 
 
-
-
-    public AwayAdapter(ArrayList<String> teams,int home_team)
-    {
+    public AwayAdapter(ArrayList<String> teams, int home_team) {
         this.d1.teams = teams;
         this.home_team = home_team;
 
 
     }
-
 
 
     @Override
@@ -105,32 +91,24 @@ public class AwayAdapter extends RecyclerView.Adapter<AwayAdapter.AwayTeamViewHo
     }
 
 
-
     @Override
-    public void onBindViewHolder(AwayTeamViewHolder awayTeamViewHolder, int i)
-    {
+    public void onBindViewHolder(AwayTeamViewHolder awayTeamViewHolder, int i) {
         awayTeamViewHolder.teamName.setText(d1.teams.get(i));
-        awayTeamViewHolder.teamName.setContentDescription("Team name:"+d1.teams.get(i));
+        awayTeamViewHolder.teamName.setContentDescription("Team name:" + d1.teams.get(i));
         int resourceId = awayTeamViewHolder.mcontext.getResources().getIdentifier(TeamInfo.getTeamLogo(d1.teams.get(i)), "drawable", "com.udacity.yaafl");
-        awayTeamViewHolder.away_teams.setImageDrawable(ContextCompat.getDrawable(awayTeamViewHolder.mcontext,resourceId));
-        awayTeamViewHolder.away_teams.setContentDescription("Team Image:"+d1.teams.get(i));
+        awayTeamViewHolder.away_teams.setImageDrawable(ContextCompat.getDrawable(awayTeamViewHolder.mcontext, resourceId));
+        awayTeamViewHolder.away_teams.setContentDescription("Team Image:" + d1.teams.get(i));
     }
 
     @Override
-    public int getItemCount()
-    {
+    public int getItemCount() {
 
-        if(d1.teams!=null)
-        {
+        if (d1.teams != null) {
             return d1.teams.size();
-        }
-        else
-        {
+        } else {
             return 0;
         }
     }
-
-
 
 
 }

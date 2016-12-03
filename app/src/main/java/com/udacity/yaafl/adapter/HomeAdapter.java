@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.elmargomez.typer.Font;
 import com.elmargomez.typer.Typer;
 import com.udacity.yaafl.R;
@@ -24,64 +25,54 @@ import com.udacity.yaafl.activities.AwayTeamSelector;
 
 import java.util.ArrayList;
 
-public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeTeamViewHolder>
-{
-
+public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeTeamViewHolder> {
 
 
     private DataHolder d1 = new DataHolder();
 
-    public  class HomeTeamViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
-    {
+    public class HomeTeamViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private TextView teamName;
         private ImageView home_teams;
         private Context mcontext;
 
 
-        HomeTeamViewHolder(View itemView)
-        {
+        HomeTeamViewHolder(View itemView) {
             super(itemView);
             mcontext = itemView.getContext();
-            home_teams = (ImageView)itemView.findViewById(R.id.homeTeamImage);
-            teamName = (TextView)itemView.findViewById(R.id.homeTeamName);
+            home_teams = (ImageView) itemView.findViewById(R.id.homeTeamImage);
+            teamName = (TextView) itemView.findViewById(R.id.homeTeamName);
             Typeface font = Typer.set(mcontext).getFont(Font.ROBOTO_MEDIUM);
             teamName.setTypeface(font);
             itemView.setOnClickListener(this);
         }
 
         @Override
-        public void onClick(View view)
-        {
+        public void onClick(View view) {
             Intent intent = new Intent(itemView.getContext(), AwayTeamSelector.class);
             Bundle extras = new Bundle();
-            extras.putInt("HOME",getLayoutPosition());
-            Log.e("TEST",""+getLayoutPosition());
+            extras.putInt("HOME", getLayoutPosition());
+            Log.e("TEST", "" + getLayoutPosition());
             intent.putExtras(extras);
             ActivityOptionsCompat options = ActivityOptionsCompat.
-                    makeSceneTransitionAnimation((Activity)mcontext, home_teams, "appcard");
+                    makeSceneTransitionAnimation((Activity) mcontext, home_teams, "appcard");
             itemView.getContext().startActivity(intent, options.toBundle());
 
-            ((Activity)mcontext).finish();
+            ((Activity) mcontext).finish();
 
         }
 
 
-
     }
 
-    private static class DataHolder
-    {
+    private static class DataHolder {
         ArrayList<String> teams;
 
     }
 
 
-
-    public HomeAdapter(ArrayList<String> teams)
-    {
+    public HomeAdapter(ArrayList<String> teams) {
         this.d1.teams = teams;
     }
-
 
 
     @Override
@@ -97,33 +88,26 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeTeamViewHo
     }
 
 
-
     @Override
-    public void onBindViewHolder(HomeTeamViewHolder homeTeamViewHolder, int i)
-    {
+    public void onBindViewHolder(HomeTeamViewHolder homeTeamViewHolder, int i) {
 
         homeTeamViewHolder.teamName.setText(d1.teams.get(i));
-        homeTeamViewHolder.teamName.setContentDescription("Team name:"+d1.teams.get(i));
-        String x = "e"+i;
+        homeTeamViewHolder.teamName.setContentDescription("Team name:" + d1.teams.get(i));
+        String x = "e" + i;
         int resourceId = homeTeamViewHolder.mcontext.getResources().getIdentifier(x, "drawable", "com.udacity.yaafl");
-        homeTeamViewHolder.home_teams.setImageDrawable(ContextCompat.getDrawable(homeTeamViewHolder.mcontext,resourceId));
-        homeTeamViewHolder.home_teams.setContentDescription("Team Image:"+d1.teams.get(i));
+        homeTeamViewHolder.home_teams.setImageDrawable(ContextCompat.getDrawable(homeTeamViewHolder.mcontext, resourceId));
+        homeTeamViewHolder.home_teams.setContentDescription("Team Image:" + d1.teams.get(i));
     }
 
     @Override
-    public int getItemCount()
-    {
+    public int getItemCount() {
 
-        if(d1.teams!=null)
-        {
+        if (d1.teams != null) {
             return d1.teams.size();
-        }
-        else
-        {
+        } else {
             return 0;
         }
     }
-
 
 
 }

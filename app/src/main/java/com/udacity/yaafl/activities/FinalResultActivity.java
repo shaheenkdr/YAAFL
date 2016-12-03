@@ -30,35 +30,33 @@ public class FinalResultActivity extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_final_result);
         Bundle extras = getIntent().getExtras();
-        ImageView im1 = (ImageView)findViewById(R.id.winImage);
-        final String val ="e"+extras.getInt("SCORE");
+        ImageView im1 = (ImageView) findViewById(R.id.winImage);
+        final String val = "e" + extras.getInt("SCORE");
         int resourceId = this.getResources().getIdentifier(val, "drawable", "com.udacity.yaafl");
         im1.setImageResource(resourceId);
         StringBuilder sx = new StringBuilder();
         sx.append(TeamInfo.getTeamNameForView(extras.getInt("SCORE")));
         sx.append(" ");
         sx.append("wins");
-        TextView t1 = (TextView)findViewById(R.id.winningText);
+        TextView t1 = (TextView) findViewById(R.id.winningText);
         Typeface font = Typer.set(this).getFont(Font.ROBOTO_BOLD);
         t1.setTypeface(font);
         t1.setText(sx.toString().toUpperCase());
-        t1.setContentDescription(sx.toString()+"Wins");
+        t1.setContentDescription(sx.toString() + "Wins");
         MobileAds.initialize(getApplicationContext(), "ca-app-pub-3940256099942544~3347511713");
         AdView mAdView = (AdView) findViewById(R.id.adView);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
-        FloatingActionButton fabRefresh = (FloatingActionButton)findViewById(R.id.fabRefresh);
+        FloatingActionButton fabRefresh = (FloatingActionButton) findViewById(R.id.fabRefresh);
         fabRefresh.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
                 new AlertDialog.Builder(FinalResultActivity.this)
                         .setPositiveButton("yes", new DialogInterface.OnClickListener() {
                             @Override
-                            public void onClick(DialogInterface dialog, int which)
-                            {
+                            public void onClick(DialogInterface dialog, int which) {
                                 finish();
-                                Intent intent = new Intent(FinalResultActivity.this,HomeTeamSelector.class);
+                                Intent intent = new Intent(FinalResultActivity.this, HomeTeamSelector.class);
                                 startActivity(intent);
                             }
                         })
@@ -71,16 +69,14 @@ public class FinalResultActivity extends AppCompatActivity {
             }
         });
 
-        FloatingActionButton fabShare = (FloatingActionButton)findViewById(R.id.fabShare);
+        FloatingActionButton fabShare = (FloatingActionButton) findViewById(R.id.fabShare);
         fabShare.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
                 new AlertDialog.Builder(FinalResultActivity.this)
                         .setPositiveButton("yes", new DialogInterface.OnClickListener() {
                             @Override
-                            public void onClick(DialogInterface dialog, int which)
-                            {
+                            public void onClick(DialogInterface dialog, int which) {
                                 Intent sendIntent = new Intent();
                                 sendIntent.setAction(Intent.ACTION_SEND);
                                 sendIntent.putExtra(Intent.EXTRA_TEXT,
@@ -93,7 +89,6 @@ public class FinalResultActivity extends AppCompatActivity {
                         .setTitle("Share")
                         .setMessage("Share the app with friends?")
                         .show();
-
 
 
             }

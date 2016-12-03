@@ -2,6 +2,7 @@ package com.udacity.yaafl.firebase_db;
 
 import java.util.HashMap;
 import java.util.Map;
+
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -30,9 +31,7 @@ public class Shots {
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
-     *
-     * @return
-     * The offTarget
+     * @return The offTarget
      */
     @JsonProperty("OffTarget")
     public Double getOffTarget() {
@@ -40,9 +39,7 @@ public class Shots {
     }
 
     /**
-     *
-     * @param offTarget
-     * The OffTarget
+     * @param offTarget The OffTarget
      */
     @JsonProperty("OffTarget")
     public void setOffTarget(Double offTarget) {
@@ -50,9 +47,7 @@ public class Shots {
     }
 
     /**
-     *
-     * @return
-     * The onTarget
+     * @return The onTarget
      */
     @JsonProperty("OnTarget")
     public Double getOnTarget() {
@@ -60,9 +55,7 @@ public class Shots {
     }
 
     /**
-     *
-     * @param onTarget
-     * The OnTarget
+     * @param onTarget The OnTarget
      */
     @JsonProperty("OnTarget")
     public void setOnTarget(Double onTarget) {
@@ -70,9 +63,7 @@ public class Shots {
     }
 
     /**
-     *
-     * @return
-     * The team
+     * @return The team
      */
     @JsonProperty("Team")
     public String getTeam() {
@@ -80,9 +71,7 @@ public class Shots {
     }
 
     /**
-     *
-     * @param team
-     * The Team
+     * @param team The Team
      */
     @JsonProperty("Team")
     public void setTeam(String team) {
@@ -90,9 +79,7 @@ public class Shots {
     }
 
     /**
-     *
-     * @return
-     * The total
+     * @return The total
      */
     @JsonProperty("Total")
     public Double getTotal() {
@@ -100,9 +87,7 @@ public class Shots {
     }
 
     /**
-     *
-     * @param total
-     * The Total
+     * @param total The Total
      */
     @JsonProperty("Total")
     public void setTotal(Double total) {

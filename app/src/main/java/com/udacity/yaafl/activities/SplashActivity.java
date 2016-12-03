@@ -13,6 +13,7 @@ import android.view.WindowManager;
 
 import com.crashlytics.android.Crashlytics;
 import com.udacity.yaafl.R;
+
 import io.fabric.sdk.android.Fabric;
 
 public class SplashActivity extends AppCompatActivity {
@@ -34,9 +35,8 @@ public class SplashActivity extends AppCompatActivity {
             public void run() {
 
 
-
-                Intent intent = new Intent(SplashActivity.this,HomeTeamSelector.class);
-                startActivity(intent,options.toBundle());
+                Intent intent = new Intent(SplashActivity.this, HomeTeamSelector.class);
+                startActivity(intent, options.toBundle());
                 finish();
 
 
@@ -52,7 +52,6 @@ public class SplashActivity extends AppCompatActivity {
         fade.setDuration(1000);
         getWindow().setExitTransition(fade);
     }
-
 
 
 }

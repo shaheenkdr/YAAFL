@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -14,13 +15,13 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "Head2Head",
-    "Passes",
-    "Recent",
-    "Shots",
-    "Situational",
-    "Stats",
-    "Summary"
+        "Head2Head",
+        "Passes",
+        "Recent",
+        "Shots",
+        "Situational",
+        "Stats",
+        "Summary"
 })
 public class CohesionMain {
 
@@ -42,9 +43,7 @@ public class CohesionMain {
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
-     * 
-     * @return
-     *     The head2Head
+     * @return The head2Head
      */
     @JsonProperty("Head2Head")
     public List<Head2Head> getHead2Head() {
@@ -52,9 +51,7 @@ public class CohesionMain {
     }
 
     /**
-     * 
-     * @param head2Head
-     *     The Head2Head
+     * @param head2Head The Head2Head
      */
     @JsonProperty("Head2Head")
     public void setHead2Head(List<Head2Head> head2Head) {
@@ -62,9 +59,7 @@ public class CohesionMain {
     }
 
     /**
-     * 
-     * @return
-     *     The passes
+     * @return The passes
      */
     @JsonProperty("Passes")
     public List<Pass> getPasses() {
@@ -72,9 +67,7 @@ public class CohesionMain {
     }
 
     /**
-     * 
-     * @param passes
-     *     The Passes
+     * @param passes The Passes
      */
     @JsonProperty("Passes")
     public void setPasses(List<Pass> passes) {
@@ -82,9 +75,7 @@ public class CohesionMain {
     }
 
     /**
-     * 
-     * @return
-     *     The recent
+     * @return The recent
      */
     @JsonProperty("Recent")
     public List<Recent> getRecent() {
@@ -92,9 +83,7 @@ public class CohesionMain {
     }
 
     /**
-     * 
-     * @param recent
-     *     The Recent
+     * @param recent The Recent
      */
     @JsonProperty("Recent")
     public void setRecent(List<Recent> recent) {
@@ -102,9 +91,7 @@ public class CohesionMain {
     }
 
     /**
-     * 
-     * @return
-     *     The shots
+     * @return The shots
      */
     @JsonProperty("Shots")
     public List<Shot> getShots() {
@@ -112,9 +99,7 @@ public class CohesionMain {
     }
 
     /**
-     * 
-     * @param shots
-     *     The Shots
+     * @param shots The Shots
      */
     @JsonProperty("Shots")
     public void setShots(List<Shot> shots) {
@@ -122,9 +107,7 @@ public class CohesionMain {
     }
 
     /**
-     * 
-     * @return
-     *     The situational
+     * @return The situational
      */
     @JsonProperty("Situational")
     public List<Situational> getSituational() {
@@ -132,9 +115,7 @@ public class CohesionMain {
     }
 
     /**
-     * 
-     * @param situational
-     *     The Situational
+     * @param situational The Situational
      */
     @JsonProperty("Situational")
     public void setSituational(List<Situational> situational) {
@@ -142,9 +123,7 @@ public class CohesionMain {
     }
 
     /**
-     * 
-     * @return
-     *     The stats
+     * @return The stats
      */
     @JsonProperty("Stats")
     public Stats getStats() {
@@ -152,9 +131,7 @@ public class CohesionMain {
     }
 
     /**
-     * 
-     * @param stats
-     *     The Stats
+     * @param stats The Stats
      */
     @JsonProperty("Stats")
     public void setStats(Stats stats) {
@@ -162,9 +139,7 @@ public class CohesionMain {
     }
 
     /**
-     * 
-     * @return
-     *     The summary
+     * @return The summary
      */
     @JsonProperty("Summary")
     public List<Summary> getSummary() {
@@ -172,9 +147,7 @@ public class CohesionMain {
     }
 
     /**
-     * 
-     * @param summary
-     *     The Summary
+     * @param summary The Summary
      */
     @JsonProperty("Summary")
     public void setSummary(List<Summary> summary) {

@@ -26,9 +26,7 @@ public class Summary {
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
-     *
-     * @return
-     * The score
+     * @return The score
      */
     @JsonProperty("Score")
     public Double getScore() {
@@ -36,9 +34,7 @@ public class Summary {
     }
 
     /**
-     *
-     * @param score
-     * The Score
+     * @param score The Score
      */
     @JsonProperty("Score")
     public void setScore(Double score) {
@@ -46,9 +42,7 @@ public class Summary {
     }
 
     /**
-     *
-     * @return
-     * The team
+     * @return The team
      */
     @JsonProperty("Team")
     public String getTeam() {
@@ -56,9 +50,7 @@ public class Summary {
     }
 
     /**
-     *
-     * @param team
-     * The Team
+     * @param team The Team
      */
     @JsonProperty("Team")
     public void setTeam(String team) {

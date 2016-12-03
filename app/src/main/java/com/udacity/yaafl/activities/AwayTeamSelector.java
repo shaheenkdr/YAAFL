@@ -32,14 +32,10 @@ import com.udacity.yaafl.utility.TeamInfo;
 
 import java.util.ArrayList;
 
-public class AwayTeamSelector extends AppCompatActivity
-{
+public class AwayTeamSelector extends AppCompatActivity {
 
 
     private CollapsingToolbarLayout collapsingToolbarLayout = null;
-
-
-
 
 
     @Override
@@ -50,14 +46,13 @@ public class AwayTeamSelector extends AppCompatActivity
         int homeTeam = extras.getInt("HOME");
 
         ArrayList<String> team_list = new ArrayList<>();
-        for(int i=0;i<20;i++)
-        {
-            if(i!=homeTeam)
-            team_list.add(TeamInfo.getTeamNameForView(i));
+        for (int i = 0; i < 20; i++) {
+            if (i != homeTeam)
+                team_list.add(TeamInfo.getTeamNameForView(i));
         }
         setupWindowAnimations();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_away);
-        final AppBarLayout abl = (AppBarLayout)findViewById(R.id.appBarAway);
+        final AppBarLayout abl = (AppBarLayout) findViewById(R.id.appBarAway);
         setSupportActionBar(toolbar);
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
@@ -70,19 +65,18 @@ public class AwayTeamSelector extends AppCompatActivity
 
         dynamicToolbarColor();
         toolbarTextAppearence();
-        final RecyclerView rView = (RecyclerView)findViewById(R.id.awayTeamRView);
+        final RecyclerView rView = (RecyclerView) findViewById(R.id.awayTeamRView);
         rView.setHasFixedSize(true);
         SpeedyLinearLayoutManager llm = new SpeedyLinearLayoutManager(AwayTeamSelector.this);
         rView.setLayoutManager(llm);
-        AwayAdapter awayAdapter = new AwayAdapter(team_list,homeTeam);
+        AwayAdapter awayAdapter = new AwayAdapter(team_list, homeTeam);
         rView.setAdapter(awayAdapter);
 
 
-        FloatingActionButton fab = (FloatingActionButton)findViewById(R.id.fabAway);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fabAway);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
                 abl.setExpanded(false);
                 rView.smoothScrollToPosition(7);
 
@@ -106,8 +100,8 @@ public class AwayTeamSelector extends AppCompatActivity
 
             @Override
             public void onGenerated(Palette palette) {
-                collapsingToolbarLayout.setContentScrimColor(palette.getMutedColor(ContextCompat.getColor(AwayTeamSelector.this,R.color.colorPrimary)));
-                collapsingToolbarLayout.setStatusBarScrimColor(palette.getMutedColor(ContextCompat.getColor(AwayTeamSelector.this,R.color.colorPrimary)));
+                collapsingToolbarLayout.setContentScrimColor(palette.getMutedColor(ContextCompat.getColor(AwayTeamSelector.this, R.color.colorPrimary)));
+                collapsingToolbarLayout.setStatusBarScrimColor(palette.getMutedColor(ContextCompat.getColor(AwayTeamSelector.this, R.color.colorPrimary)));
             }
         });
     }
@@ -118,11 +112,10 @@ public class AwayTeamSelector extends AppCompatActivity
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
-            Intent intent = new Intent(AwayTeamSelector.this,HomeTeamSelector.class);
-            startActivity(intent);
-            finish();
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent = new Intent(AwayTeamSelector.this, HomeTeamSelector.class);
+        startActivity(intent);
+        finish();
         return super.onOptionsItemSelected(item);
     }
 }

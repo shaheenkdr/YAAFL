@@ -26,15 +26,13 @@ import com.udacity.yaafl.utility.TeamInfo;
 
 import java.util.ArrayList;
 
-public class HomeTeamSelector extends AppCompatActivity
-{
+public class HomeTeamSelector extends AppCompatActivity {
     private static ArrayList<String> team_list;
     private CollapsingToolbarLayout collapsingToolbarLayout = null;
 
-    static
-    {
+    static {
         team_list = new ArrayList<>();
-        for(int i=0;i<20;i++)
+        for (int i = 0; i < 20; i++)
             team_list.add(TeamInfo.getTeamNameForView(i));
     }
 
@@ -45,7 +43,7 @@ public class HomeTeamSelector extends AppCompatActivity
         setupWindowAnimations();
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        final AppBarLayout abl = (AppBarLayout)findViewById(R.id.appbarhome);
+        final AppBarLayout abl = (AppBarLayout) findViewById(R.id.appbarhome);
 
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         Typeface font = Typer.set(this).getFont(Font.ROBOTO_BOLD);
@@ -54,25 +52,23 @@ public class HomeTeamSelector extends AppCompatActivity
 
         dynamicToolbarColor();
         toolbarTextAppernce();
-        final RecyclerView rView = (RecyclerView)findViewById(R.id.homeTeamRView);
+        final RecyclerView rView = (RecyclerView) findViewById(R.id.homeTeamRView);
         rView.setHasFixedSize(true);
         SpeedyLinearLayoutManager llm = new SpeedyLinearLayoutManager(HomeTeamSelector.this);
         rView.setLayoutManager(llm);
         HomeAdapter homeAdapter = new HomeAdapter(team_list);
         rView.setAdapter(homeAdapter);
 
-        FloatingActionButton fab = (FloatingActionButton)findViewById(R.id.fab);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view)
-            {
+            public void onClick(View view) {
                 abl.setExpanded(false);
                 rView.smoothScrollToPosition(7);
 
 
             }
         });
-
 
 
     }
@@ -92,8 +88,8 @@ public class HomeTeamSelector extends AppCompatActivity
 
             @Override
             public void onGenerated(Palette palette) {
-                collapsingToolbarLayout.setContentScrimColor(palette.getMutedColor(ContextCompat.getColor(HomeTeamSelector.this,R.color.colorPrimary)));
-                collapsingToolbarLayout.setStatusBarScrimColor(palette.getMutedColor(ContextCompat.getColor(HomeTeamSelector.this,R.color.colorPrimary)));
+                collapsingToolbarLayout.setContentScrimColor(palette.getMutedColor(ContextCompat.getColor(HomeTeamSelector.this, R.color.colorPrimary)));
+                collapsingToolbarLayout.setStatusBarScrimColor(palette.getMutedColor(ContextCompat.getColor(HomeTeamSelector.this, R.color.colorPrimary)));
             }
         });
     }

@@ -2,6 +2,7 @@ package com.udacity.yaafl.firebase_db;
 
 import java.util.HashMap;
 import java.util.Map;
+
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -27,9 +28,7 @@ public class Stats {
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
-     *
-     * @return
-     * The awayWin
+     * @return The awayWin
      */
     @JsonProperty("Away_Win")
     public Double getAwayWin() {
@@ -37,9 +36,7 @@ public class Stats {
     }
 
     /**
-     *
-     * @param awayWin
-     * The Away_Win
+     * @param awayWin The Away_Win
      */
     @JsonProperty("Away_Win")
     public void setAwayWin(Double awayWin) {
@@ -47,9 +44,7 @@ public class Stats {
     }
 
     /**
-     *
-     * @return
-     * The draw
+     * @return The draw
      */
     @JsonProperty("Draw")
     public Double getDraw() {
@@ -57,9 +52,7 @@ public class Stats {
     }
 
     /**
-     *
-     * @param draw
-     * The Draw
+     * @param draw The Draw
      */
     @JsonProperty("Draw")
     public void setDraw(Double draw) {
@@ -67,9 +60,7 @@ public class Stats {
     }
 
     /**
-     *
-     * @return
-     * The homeWin
+     * @return The homeWin
      */
     @JsonProperty("Home_Win")
     public Double getHomeWin() {
@@ -77,9 +68,7 @@ public class Stats {
     }
 
     /**
-     *
-     * @param homeWin
-     * The Home_Win
+     * @param homeWin The Home_Win
      */
     @JsonProperty("Home_Win")
     public void setHomeWin(Double homeWin) {

@@ -1,38 +1,32 @@
 package com.udacity.yaafl.event_bus;
 
 
-public class SituationalEvent
-{
+public class SituationalEvent {
     private final double summary;
     private final int pass;
     private final int shots;
     private final int situational;
 
-    public SituationalEvent(double summ,int pass,int shots,int situational)
-    {
+    public SituationalEvent(double summ, int pass, int shots, int situational) {
         this.summary = summ;
         this.pass = pass;
         this.shots = shots;
         this.situational = situational;
     }
 
-    public double getSummary()
-    {
+    public double getSummary() {
         return summary;
     }
 
-    public int getPass()
-    {
+    public int getPass() {
         return pass;
     }
 
-    public int getShots()
-    {
+    public int getShots() {
         return shots;
     }
 
-    public int getSituational()
-    {
+    public int getSituational() {
         return situational;
     }
 }

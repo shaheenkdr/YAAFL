@@ -41,9 +41,7 @@ public class Passes {
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
-     *
-     * @return
-     * The awayFactor
+     * @return The awayFactor
      */
     @JsonProperty("AwayFactor")
     public Boolean getAwayFactor() {
@@ -51,9 +49,7 @@ public class Passes {
     }
 
     /**
-     *
-     * @param awayFactor
-     * The AwayFactor
+     * @param awayFactor The AwayFactor
      */
     @JsonProperty("AwayFactor")
     public void setAwayFactor(Boolean awayFactor) {
@@ -61,9 +57,7 @@ public class Passes {
     }
 
     /**
-     *
-     * @return
-     * The cross
+     * @return The cross
      */
     @JsonProperty("Cross")
     public Integer getCross() {
@@ -71,9 +65,7 @@ public class Passes {
     }
 
     /**
-     *
-     * @param cross
-     * The Cross
+     * @param cross The Cross
      */
     @JsonProperty("Cross")
     public void setCross(Integer cross) {
@@ -81,9 +73,7 @@ public class Passes {
     }
 
     /**
-     *
-     * @return
-     * The homeFactor
+     * @return The homeFactor
      */
     @JsonProperty("HomeFactor")
     public Boolean getHomeFactor() {
@@ -91,9 +81,7 @@ public class Passes {
     }
 
     /**
-     *
-     * @param homeFactor
-     * The HomeFactor
+     * @param homeFactor The HomeFactor
      */
     @JsonProperty("HomeFactor")
     public void setHomeFactor(Boolean homeFactor) {
@@ -101,9 +89,7 @@ public class Passes {
     }
 
     /**
-     *
-     * @return
-     * The longBall
+     * @return The longBall
      */
     @JsonProperty("LongBall")
     public Integer getLongBall() {
@@ -111,9 +97,7 @@ public class Passes {
     }
 
     /**
-     *
-     * @param longBall
-     * The LongBall
+     * @param longBall The LongBall
      */
     @JsonProperty("LongBall")
     public void setLongBall(Integer longBall) {
@@ -121,9 +105,7 @@ public class Passes {
     }
 
     /**
-     *
-     * @return
-     * The shortPass
+     * @return The shortPass
      */
     @JsonProperty("ShortPass")
     public Integer getShortPass() {
@@ -131,9 +113,7 @@ public class Passes {
     }
 
     /**
-     *
-     * @param shortPass
-     * The ShortPass
+     * @param shortPass The ShortPass
      */
     @JsonProperty("ShortPass")
     public void setShortPass(Integer shortPass) {
@@ -141,9 +121,7 @@ public class Passes {
     }
 
     /**
-     *
-     * @return
-     * The team
+     * @return The team
      */
     @JsonProperty("Team")
     public String getTeam() {
@@ -151,9 +129,7 @@ public class Passes {
     }
 
     /**
-     *
-     * @param team
-     * The Team
+     * @param team The Team
      */
     @JsonProperty("Team")
     public void setTeam(String team) {
@@ -161,9 +137,7 @@ public class Passes {
     }
 
     /**
-     *
-     * @return
-     * The throughBall
+     * @return The throughBall
      */
     @JsonProperty("ThroughBall")
     public Integer getThroughBall() {
@@ -171,9 +145,7 @@ public class Passes {
     }
 
     /**
-     *
-     * @param throughBall
-     * The ThroughBall
+     * @param throughBall The ThroughBall
      */
     @JsonProperty("ThroughBall")
     public void setThroughBall(Integer throughBall) {

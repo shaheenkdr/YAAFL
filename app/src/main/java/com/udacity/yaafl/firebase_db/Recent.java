@@ -28,9 +28,7 @@ public class Recent {
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
-     *
-     * @return
-     * The team
+     * @return The team
      */
     @JsonProperty("Team")
     public String getTeam() {
@@ -38,9 +36,7 @@ public class Recent {
     }
 
     /**
-     *
-     * @param team
-     * The Team
+     * @param team The Team
      */
     @JsonProperty("Team")
     public void setTeam(String team) {
@@ -48,9 +44,7 @@ public class Recent {
     }
 
     /**
-     *
-     * @return
-     * The games
+     * @return The games
      */
     @JsonProperty("games")
     public List<Integer> getGames() {
@@ -58,9 +52,7 @@ public class Recent {
     }
 
     /**
-     *
-     * @param games
-     * The games
+     * @param games The games
      */
     @JsonProperty("games")
     public void setGames(List<Integer> games) {

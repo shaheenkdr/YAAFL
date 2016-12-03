@@ -15,11 +15,10 @@ import com.udacity.yaafl.R;
 import com.udacity.yaafl.activities.HomeTeamSelector;
 
 
-public class Widget extends AppWidgetProvider
-{
+public class Widget extends AppWidgetProvider {
     private static String YOUR_AWESOME_ACTION = "YourAwesomeAction";
-    public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds)
-    {
+
+    public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         for (int appWidgetId : appWidgetIds) {
             RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget);
 
@@ -27,7 +26,6 @@ public class Widget extends AppWidgetProvider
             Intent intent = new Intent(context, HomeTeamSelector.class);
             PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
             views.setOnClickPendingIntent(R.id.widgetLayout, pendingIntent);
-
 
 
             // Set up collection items
