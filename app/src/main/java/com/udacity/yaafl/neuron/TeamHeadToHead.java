@@ -12,34 +12,34 @@ import java.util.List;
  */
 
 public class TeamHeadToHead {
-    private int team1_id;
-    private int team2_id;
-    private int[] score;
+    private int mTeam1Id;
+    private int mTeam2Id;
+    private int[] mScore;
 
     private List<com.udacity.yaafl.cohesion.Head2Head> head;
 
     public TeamHeadToHead(List<com.udacity.yaafl.cohesion.Head2Head> head, int team1, int team2) {
         this.head = head;
-        this.team1_id = team1;
-        this.team2_id = team2;
-        score = new int[2];
+        this.mTeam1Id = team1;
+        this.mTeam2Id = team2;
+        mScore = new int[2];
     }
 
     public int[] computeScore() {
-        final String MID = TeamInfo.getMatchId(TeamInfo.getTeamName(team1_id) + " VS " + TeamInfo.getTeamName(team2_id));
+        final String MID = TeamInfo.getMatchId(TeamInfo.getTeamName(mTeam1Id) + " VS " + TeamInfo.getTeamName(mTeam2Id));
 
         if (!MID.equals("")) {
             for (com.udacity.yaafl.cohesion.Head2Head versus : head) {
 
                 if (versus.getMatchID().equals(MID)) {
-                    score[0] = versus.getTeam1() * 4;
-                    score[1] = versus.getTeam2() * 4;
+                    mScore[0] = versus.getTeam1() * 4;
+                    mScore[1] = versus.getTeam2() * 4;
                     break;
                 }
             }
-            return score;
+            return mScore;
         } else
-            return score;
+            return mScore;
 
     }
 }

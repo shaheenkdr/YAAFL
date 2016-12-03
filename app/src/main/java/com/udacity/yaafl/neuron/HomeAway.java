@@ -10,37 +10,37 @@ import java.util.List;
  * Away team based on team id and home or away value
  */
 public class HomeAway {
-    private int team_id;
-    private boolean home_away_id;
-    private int home_wins;
-    private int away_wins;
+    private int mTeamId;
+    private boolean mHomeAwayId;
+    private int mHomeWins;
+    private int mAwayWins;
     private List<com.udacity.yaafl.cohesion.Situational> s_data;
 
 
     public HomeAway(int team, boolean home_away, List<com.udacity.yaafl.cohesion.Situational> s_data) {
-        this.team_id = team;
-        this.home_away_id = home_away;
+        this.mTeamId = team;
+        this.mHomeAwayId = home_away;
         this.s_data = s_data;
     }
 
     public int computeHomeAwayScore() {
 
-        if (home_away_id) {
+        if (mHomeAwayId) {
             for (com.udacity.yaafl.cohesion.Situational situation_data : s_data) {
-                if (situation_data.getHome() && situation_data.getTeam().equals(TeamInfo.getTeamName(team_id))) {
-                    home_wins = (int) ((double) (situation_data.getWon()) / (double) (situation_data.getMatchPlayed()) * 100);
-                    home_wins -= situation_data.getLose() * 10;
+                if (situation_data.getHome() && situation_data.getTeam().equals(TeamInfo.getTeamName(mTeamId))) {
+                    mHomeWins = (int) ((double) (situation_data.getWon()) / (double) (situation_data.getMatchPlayed()) * 100);
+                    mAwayWins -= situation_data.getLose() * 10;
                 }
             }
-            return home_wins * 2;
+            return mHomeWins * 2;
         } else {
             for (com.udacity.yaafl.cohesion.Situational situation_data : s_data) {
-                if (situation_data.getAway() && situation_data.getTeam().equals(TeamInfo.getTeamName(team_id))) {
-                    away_wins = (int) ((double) (situation_data.getWon()) / (double) (situation_data.getMatchPlayed()) * 100);
-                    away_wins -= situation_data.getLose() * 5;
+                if (situation_data.getAway() && situation_data.getTeam().equals(TeamInfo.getTeamName(mTeamId))) {
+                    mAwayWins = (int) ((double) (situation_data.getWon()) / (double) (situation_data.getMatchPlayed()) * 100);
+                    mAwayWins -= situation_data.getLose() * 5;
                 }
             }
-            return away_wins * 2;
+            return mAwayWins * 2;
         }
 
 

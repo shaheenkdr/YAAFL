@@ -15,10 +15,10 @@ import java.util.List;
  */
 
 public class TeamCohesion {
-    private int team_id;
-    private boolean home_away_id;
-    private int home_away_score;
-    private int cohesion_score;
+    private int mTeamId;
+    private boolean mHomeAwayId;
+    private int mHomeAwayScore;
+    private int mCohesionScore;
 
 
     private List<com.udacity.yaafl.cohesion.Summary> summary;
@@ -29,15 +29,13 @@ public class TeamCohesion {
 
     public TeamCohesion(int teamId, boolean homeAwayId, int homeAwayScore, List<com.udacity.yaafl.cohesion.Summary> summary, List<Pass> passes, List<Shot> shots, List<com.udacity.yaafl.cohesion.Situational> situation) {
 
-        this.team_id = teamId;
-        this.home_away_id = homeAwayId;
-        this.home_away_score = homeAwayScore;
+        this.mTeamId = teamId;
+        this.mHomeAwayId = homeAwayId;
+        this.mHomeAwayScore = homeAwayScore;
         this.summary = summary;
         this.passes = passes;
         this.shots = shots;
         this.situation = situation;
-
-
     }
 
     public int computeTeamCohesion() {
@@ -49,7 +47,7 @@ public class TeamCohesion {
     private int getSummary() {
 
         for (com.udacity.yaafl.cohesion.Summary team_summary : summary) {
-            if (team_summary.getTeam().equals(TeamInfo.getTeamName(team_id))) {
+            if (team_summary.getTeam().equals(TeamInfo.getTeamName(mTeamId))) {
 
                 double x = team_summary.getScore() * 10;
                 return (int) x;
@@ -61,14 +59,14 @@ public class TeamCohesion {
     private int getPasses() {
         int passes_score = 0;
         for (Pass pass_val : passes) {
-            if (home_away_id) {
+            if (mHomeAwayId) {
 
-                if (pass_val.getTeam().equals(TeamInfo.getTeamName(team_id)) && pass_val.getHomeFactor()) {
+                if (pass_val.getTeam().equals(TeamInfo.getTeamName(mTeamId)) && pass_val.getHomeFactor()) {
                     passes_score = pass_val.getCross() + pass_val.getLongBall() + (pass_val.getShortPass() / 10) + (pass_val.getThroughBall() * 10);
                 }
             } else {
 
-                if (pass_val.getTeam().equals(TeamInfo.getTeamName(team_id)) && pass_val.getAwayFactor()) {
+                if (pass_val.getTeam().equals(TeamInfo.getTeamName(mTeamId)) && pass_val.getAwayFactor()) {
                     passes_score = pass_val.getCross() + pass_val.getLongBall() + (pass_val.getShortPass() / 10) + (pass_val.getThroughBall() * 10);
                 }
 
@@ -80,7 +78,7 @@ public class TeamCohesion {
     private int getShots() {
         int score = 0;
         for (Shot s : shots) {
-            if (s.getTeam().equals(TeamInfo.getTeamName(team_id))) {
+            if (s.getTeam().equals(TeamInfo.getTeamName(mTeamId))) {
                 score = (int) ((s.getOnTarget() / s.getTotal()) * 100);
                 break;
             }
@@ -91,10 +89,10 @@ public class TeamCohesion {
     private int getSituationalAnalysis() {
         int ret_score = 0;
 
-        if (home_away_id) {
+        if (mHomeAwayId) {
             for (com.udacity.yaafl.cohesion.Situational s_data : situation) {
 
-                if (s_data.getTeam().equals(TeamInfo.getTeamName(team_id)) && s_data.getHome()) {
+                if (s_data.getTeam().equals(TeamInfo.getTeamName(mTeamId)) && s_data.getHome()) {
                     final int lose = s_data.getLose() * -10;
                     final int won = (int) (((double) s_data.getWon() / (double) s_data.getMatchPlayed()) * 10);
                     final int open = s_data.getOpenPlay() * 5;
@@ -107,7 +105,7 @@ public class TeamCohesion {
         } else {
             for (com.udacity.yaafl.cohesion.Situational s_data : situation) {
 
-                if (s_data.getTeam().equals(TeamInfo.getTeamName(team_id)) && s_data.getAway()) {
+                if (s_data.getTeam().equals(TeamInfo.getTeamName(mTeamId)) && s_data.getAway()) {
                     final int lose = s_data.getLose() * -5;
                     final int won = (int) (((double) s_data.getWon() / (double) s_data.getMatchPlayed()) * 20);
                     final int open = s_data.getOpenPlay() * 7;
