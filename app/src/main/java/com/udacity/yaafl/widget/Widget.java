@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Build;
+import android.widget.Button;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
@@ -23,9 +24,10 @@ public class Widget extends AppWidgetProvider {
             RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget);
 
             // Create intent to launch MainActivity
+
             Intent intent = new Intent(context, HomeTeamSelector.class);
             PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, 0);
-            views.setOnClickPendingIntent(R.id.widgetLayout, pendingIntent);
+            views.setOnClickPendingIntent(R.id.widgetb, pendingIntent);
 
 
             // Set up collection items
@@ -37,6 +39,8 @@ public class Widget extends AppWidgetProvider {
             appWidgetManager.updateAppWidget(appWidgetId, views);
 
         }
+
+
 
     }
 

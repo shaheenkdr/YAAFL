@@ -7,7 +7,9 @@ import android.graphics.Typeface;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.LoaderManager;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.content.Loader;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -29,13 +31,17 @@ import com.udacity.yaafl.adapter.AwayAdapter;
 import com.udacity.yaafl.adapter.HomeAdapter;
 import com.udacity.yaafl.utility.SpeedyLinearLayoutManager;
 import com.udacity.yaafl.utility.TeamInfo;
+import com.udacity.yaafl.utility.TeamLoader;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class AwayTeamSelector extends AppCompatActivity {
+public class AwayTeamSelector extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<String>> {
 
 
     private CollapsingToolbarLayout collapsingToolbarLayout = null;
+    private RecyclerView rView;
+    private int homeTeam;
 
 
     @Override
@@ -43,7 +49,7 @@ public class AwayTeamSelector extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_away_team_selector);
         Bundle extras = getIntent().getExtras();
-        int homeTeam = extras.getInt("HOME");
+        homeTeam = extras.getInt("HOME");
 
         ArrayList<String> team_list = new ArrayList<>();
         for (int i = 0; i < 20; i++) {
@@ -65,10 +71,11 @@ public class AwayTeamSelector extends AppCompatActivity {
 
         dynamicToolbarColor();
         toolbarTextAppearence();
-        final RecyclerView rView = (RecyclerView) findViewById(R.id.awayTeamRView);
+        rView = (RecyclerView) findViewById(R.id.awayTeamRView);
         rView.setHasFixedSize(true);
         SpeedyLinearLayoutManager llm = new SpeedyLinearLayoutManager(AwayTeamSelector.this);
         rView.setLayoutManager(llm);
+        getSupportLoaderManager().initLoader(1, null, this).forceLoad();
         AwayAdapter awayAdapter = new AwayAdapter(team_list, homeTeam);
         rView.setAdapter(awayAdapter);
 
@@ -84,6 +91,24 @@ public class AwayTeamSelector extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public Loader<List<String>> onCreateLoader(int id, Bundle args) {
+        return new TeamLoader(AwayTeamSelector.this);
+    }
+    @Override
+    public void onLoadFinished(Loader<List<String>> loader, List<String> data)
+    {
+        data.remove(homeTeam);
+        AwayAdapter awayAdapter = new AwayAdapter(new ArrayList<String>(data),homeTeam);
+        rView.setAdapter(awayAdapter);
+    }
+    @Override
+    public void onLoaderReset(Loader<List<String>> loader)
+    {
+        AwayAdapter awayAdapter = new AwayAdapter(new ArrayList<String>(),0);
+        rView.setAdapter(awayAdapter);
     }
 
     private void setupWindowAnimations() {

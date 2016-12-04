@@ -6,7 +6,9 @@ import android.graphics.Typeface;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.app.LoaderManager;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.content.Loader;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.graphics.Palette;
@@ -23,19 +25,22 @@ import com.udacity.yaafl.adapter.HomeAdapter;
 
 import com.udacity.yaafl.utility.SpeedyLinearLayoutManager;
 import com.udacity.yaafl.utility.TeamInfo;
+import com.udacity.yaafl.utility.TeamLoader;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class HomeTeamSelector extends AppCompatActivity {
-    private static ArrayList<String> team_list;
+public class HomeTeamSelector extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<String>> {
+    //private static ArrayList<String> team_list;
     private CollapsingToolbarLayout collapsingToolbarLayout = null;
-
+    private RecyclerView rView;
+/*
     static {
         team_list = new ArrayList<>();
         for (int i = 0; i < 20; i++)
             team_list.add(TeamInfo.getTeamNameForView(i));
     }
-
+*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,12 +57,12 @@ public class HomeTeamSelector extends AppCompatActivity {
 
         dynamicToolbarColor();
         toolbarTextAppernce();
-        final RecyclerView rView = (RecyclerView) findViewById(R.id.homeTeamRView);
+        rView = (RecyclerView) findViewById(R.id.homeTeamRView);
         rView.setHasFixedSize(true);
         SpeedyLinearLayoutManager llm = new SpeedyLinearLayoutManager(HomeTeamSelector.this);
         rView.setLayoutManager(llm);
-        HomeAdapter homeAdapter = new HomeAdapter(team_list);
-        rView.setAdapter(homeAdapter);
+        getSupportLoaderManager().initLoader(1, null, this).forceLoad();
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -71,6 +76,23 @@ public class HomeTeamSelector extends AppCompatActivity {
         });
 
 
+    }
+
+    @Override
+    public Loader<List<String>> onCreateLoader(int id, Bundle args) {
+        return new TeamLoader(HomeTeamSelector.this);
+    }
+    @Override
+    public void onLoadFinished(Loader<List<String>> loader, List<String> data)
+    {
+        HomeAdapter homeAdapter = new HomeAdapter(new ArrayList<String>(data));
+        rView.setAdapter(homeAdapter);
+    }
+    @Override
+    public void onLoaderReset(Loader<List<String>> loader)
+    {
+        HomeAdapter homeAdapter = new HomeAdapter(new ArrayList<String>());
+        rView.setAdapter(homeAdapter);
     }
 
     private void setupWindowAnimations() {
