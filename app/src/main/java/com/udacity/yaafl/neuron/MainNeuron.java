@@ -1,6 +1,8 @@
 package com.udacity.yaafl.neuron;
 
 
+import android.content.Context;
+
 import com.udacity.yaafl.cohesion.CohesionMain;
 import com.udacity.yaafl.event_bus.WinEvent;
 
@@ -11,11 +13,13 @@ public class MainNeuron {
     private int mTeamId1;
     private int mTeamId2;
     private CohesionMain mData;
+    private Context mContext;
 
-    public MainNeuron(CohesionMain data, int team_id_1, int team_id_2) {
+    public MainNeuron(CohesionMain data, int team_id_1, int team_id_2, Context mContext) {
         this.mData = data;
         this.mTeamId1 = team_id_1;
         this.mTeamId2 = team_id_2;
+        this.mContext = mContext;
 
 
     }
@@ -24,7 +28,7 @@ public class MainNeuron {
     public void processData() {
         int home = computeHomeScore();
         int away = computeAwayScore();
-        TeamHeadToHead teams_head_to_head = new TeamHeadToHead(mData.getHead2Head(), mTeamId1, mTeamId2);
+        TeamHeadToHead teams_head_to_head = new TeamHeadToHead(mData.getHead2Head(), mTeamId1, mTeamId2, mContext);
         int[] headToHead = teams_head_to_head.computeScore();
         home += headToHead[0];
         away += headToHead[1];

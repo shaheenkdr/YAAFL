@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:background="@color/ash"
     android:paddingEnd="10dp"
-    android:paddingStart="10dp"
-    xmlns:ads="http://schemas.android.com/apk/res-auto">
+    android:paddingStart="10dp">
 
     <android.support.v7.widget.CardView android:id="@+id/teamCard1"
         android:layout_width="match_parent"
@@ -60,7 +59,6 @@
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:contentDescription="@string/awayy"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_marginTop="20dp"
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_height="wrap_content">

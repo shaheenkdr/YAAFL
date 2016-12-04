@@ -4,8 +4,8 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.transition.Explode;
 import android.util.Log;
 import android.view.View;
@@ -108,7 +108,6 @@ public class FinalizeActivity extends AppCompatActivity {
     private class SimpleTask1 extends AsyncTask<String, String, String> {
 
 
-
         @Override
         protected void onPreExecute() {
 
@@ -116,23 +115,19 @@ public class FinalizeActivity extends AppCompatActivity {
 
         protected String doInBackground(String... sample) {
             String result1 = "";
-            MainNeuron mm = new MainNeuron(data, homeTeam,  TeamInfo.getTeamId(awayTeam));
+            MainNeuron mm = new MainNeuron(data, homeTeam, TeamInfo.getTeamId(awayTeam), FinalizeActivity.this);
             mm.processData();
             return result1;
         }
 
         protected void onPostExecute(String x) {
 
-            Log.i("PROCESS","PROCESS FINISHED");
+            Log.i("PROCESS", "PROCESS FINISHED");
 
         }
 
 
     }
-
-
-
-
 
 
     @Subscribe

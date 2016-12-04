@@ -6,11 +6,7 @@ import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
-import android.os.Build;
-import android.widget.Button;
 import android.widget.RemoteViews;
-import android.widget.Toast;
 
 import com.udacity.yaafl.R;
 import com.udacity.yaafl.activities.HomeTeamSelector;
@@ -39,7 +35,6 @@ public class Widget extends AppWidgetProvider {
             appWidgetManager.updateAppWidget(appWidgetId, views);
 
         }
-
 
 
     }

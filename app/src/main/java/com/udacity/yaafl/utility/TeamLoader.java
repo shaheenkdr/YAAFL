@@ -7,10 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class TeamLoader extends AsyncTaskLoader<List<String>>
-{
-    public TeamLoader(Context context)
-    {
+public class TeamLoader extends AsyncTaskLoader<List<String>> {
+    public TeamLoader(Context context) {
         super(context);
     }
 

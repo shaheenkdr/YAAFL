@@ -38,6 +38,10 @@
         </receiver>
 
         <activity android:name=".activities.FinalResultActivity" />
+
+        <provider
+            android:name=".sqlite.TeamProvider"
+            android:authorities="com.udacity.yaafl.sqlite.TeamProvider" />
     </application>
 
 </manifest>

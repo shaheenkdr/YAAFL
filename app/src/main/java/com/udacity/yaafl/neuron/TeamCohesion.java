@@ -3,9 +3,7 @@ package com.udacity.yaafl.neuron;
 
 import com.udacity.yaafl.cohesion.Pass;
 import com.udacity.yaafl.cohesion.Shot;
-
 import com.udacity.yaafl.utility.TeamInfo;
-
 
 import java.util.List;
 

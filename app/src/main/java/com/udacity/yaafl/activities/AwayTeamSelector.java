@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
+import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -12,23 +13,17 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.content.Loader;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.graphics.Palette;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.transition.Explode;
 import android.transition.Fade;
-import android.transition.Slide;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 
 import com.elmargomez.typer.Font;
 import com.elmargomez.typer.Typer;
 import com.udacity.yaafl.R;
 import com.udacity.yaafl.adapter.AwayAdapter;
-import com.udacity.yaafl.adapter.HomeAdapter;
 import com.udacity.yaafl.utility.SpeedyLinearLayoutManager;
 import com.udacity.yaafl.utility.TeamInfo;
 import com.udacity.yaafl.utility.TeamLoader;
@@ -97,17 +92,17 @@ public class AwayTeamSelector extends AppCompatActivity implements LoaderManager
     public Loader<List<String>> onCreateLoader(int id, Bundle args) {
         return new TeamLoader(AwayTeamSelector.this);
     }
+
     @Override
-    public void onLoadFinished(Loader<List<String>> loader, List<String> data)
-    {
+    public void onLoadFinished(Loader<List<String>> loader, List<String> data) {
         data.remove(homeTeam);
-        AwayAdapter awayAdapter = new AwayAdapter(new ArrayList<String>(data),homeTeam);
+        AwayAdapter awayAdapter = new AwayAdapter(new ArrayList<String>(data), homeTeam);
         rView.setAdapter(awayAdapter);
     }
+
     @Override
-    public void onLoaderReset(Loader<List<String>> loader)
-    {
-        AwayAdapter awayAdapter = new AwayAdapter(new ArrayList<String>(),0);
+    public void onLoaderReset(Loader<List<String>> loader) {
+        AwayAdapter awayAdapter = new AwayAdapter(new ArrayList<String>(), 0);
         rView.setAdapter(awayAdapter);
     }
 

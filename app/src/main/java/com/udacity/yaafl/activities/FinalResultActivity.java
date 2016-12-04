@@ -3,10 +3,10 @@ package com.udacity.yaafl.activities;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -79,7 +79,7 @@ public class FinalResultActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int which) {
                                 Intent sendIntent = new Intent();
                                 sendIntent.setAction(Intent.ACTION_SEND);
-                                sendIntent.putExtra(Intent.EXTRA_TEXT,getString(R.string.checkapp));
+                                sendIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.checkapp));
                                 sendIntent.setType("text/plain");
                                 startActivity(sendIntent);
                             }
