@@ -3,6 +3,7 @@ package com.udacity.yaafl.activities;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.transition.Explode;
@@ -31,6 +32,7 @@ public class FinalizeActivity extends AppCompatActivity {
     private ProgressDialog pr;
     private int homeTeam;
     private String awayTeam;
+    private CohesionMain data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +69,7 @@ public class FinalizeActivity extends AppCompatActivity {
                 pr.setMessage(getString(R.string.pro));
                 pr.isIndeterminate();
                 pr.show();
-                getPasses(homeTeam, TeamInfo.getTeamId(awayTeam));
+                getPasses();
             }
         });
 
@@ -81,15 +83,16 @@ public class FinalizeActivity extends AppCompatActivity {
     }
 
 
-    private void getPasses(final int home, final int away) {
+    private void getPasses() {
         Firebase fRef = new Firebase("https://yaafl-f20f2.firebaseio.com/Cohesion");
         fRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                CohesionMain data = dataSnapshot.getValue(CohesionMain.class);
-                MainNeuron mm = new MainNeuron(data, home, away);
-                mm.processData();
+                data = dataSnapshot.getValue(CohesionMain.class);
+                SimpleTask1 sTask = new SimpleTask1();
+                sTask.execute("abc");
+
             }
 
             @Override
@@ -100,6 +103,37 @@ public class FinalizeActivity extends AppCompatActivity {
         });
 
     }
+
+
+    private class SimpleTask1 extends AsyncTask<String, String, String> {
+
+
+
+        @Override
+        protected void onPreExecute() {
+
+        }
+
+        protected String doInBackground(String... sample) {
+            String result1 = "";
+            MainNeuron mm = new MainNeuron(data, homeTeam,  TeamInfo.getTeamId(awayTeam));
+            mm.processData();
+            return result1;
+        }
+
+        protected void onPostExecute(String x) {
+
+            Log.i("PROCESS","PROCESS FINISHED");
+
+        }
+
+
+    }
+
+
+
+
+
 
     @Subscribe
     public void onEvent(WinEvent event) {
